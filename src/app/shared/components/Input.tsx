@@ -3,6 +3,7 @@ import { styled } from '@linaria/react';
 import Button from '@app/shared/components/Button';
 import { IconEye, IconEyeCrossed } from '@app/shared/icons';
 import { css } from '@linaria/core';
+import { REG_AMOUNT } from '@app/shared/constants/common';
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -14,31 +15,30 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const ContainerStyled = styled.div<InputProps>`
   position: relative;
-  min-height: 53px;
+  //min-height: 53px;
   margin-bottom: ${({ margin }) => (margin === 'none' ? 0 : 50)}px;
 `;
 
 const InputStyled = styled.input<InputProps>`
   width: 100%;
-  height: 45px;
-  line-height: 40px;
+  height: 56px;
   padding: 15px;
   border: none;
   outline: none;
-  // background-color: transparent;
-  font-size: 14px;
+  background-color: transparent;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 36px;
   color: white;
   border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.05);
+  //background-color: rgba(255, 255, 255, 0.05);
 
   &::placeholder {
     transform: translateX(1px);
     opacity: 0.2;
-    font-size: 14px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: italic;
-    line-height: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 36px;
     letter-spacing: 0.26px;
     color: #fff;
   }
@@ -55,7 +55,7 @@ const InputStyled = styled.input<InputProps>`
   }
 
   &:focus {
-    background-color: rgba(255, 255, 255, 0.1);
+    //background-color: rgba(255, 255, 255, 0.1);
   }
 
   &.invalid {
@@ -74,15 +74,12 @@ const InputGrayStyled = styled(InputStyled)`
 `;
 
 const InputAmountStyled = styled(InputGrayStyled)<{ pallete: string }>`
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 0.34px;
   color: ${({ pallete }) => `var(--color-${pallete})`};
 `;
 
 const LabelStyled = styled.div<InputProps>`
   margin-top: 4px;
-  font-family: SFProDisplay;
+  font-family: 'SFProDisplay', sans-serif;
   font-size: 14px;
   font-style: italic;
   color: ${({ valid }) => (valid ? 'var(--color-gray)' : 'var(--color-red)')};
@@ -109,11 +106,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const [inputVisible, setInputVisible] = useState(false);
     const [inputValue, setInputValue] = useState(rest.value ?? '');
 
-    const inputHandler = (e) => {
+    const inputHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+      const { value: raw } = e.target;
+      if (raw !== '' && !REG_AMOUNT.test(raw)) {
+        return;
+      }
       if (rest?.onChange) rest?.onChange(e);
-      setInputValue(e.target.value);
+      setInputValue(raw);
     };
-
     return (
       <ContainerStyled className={className} margin={margin}>
         <InputComponent
@@ -124,6 +124,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           type={inputVisible ? 'text' : rest.type}
           className={!valid ? 'invalid' : ''}
           onChange={inputHandler}
+          pattern="(\d{3})([\.])(\d{2})"
         />
         {!!label && <LabelStyled valid={valid}>{label}</LabelStyled>}
 
