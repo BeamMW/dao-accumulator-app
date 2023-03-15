@@ -10,7 +10,7 @@ interface WindowProps {
 }
 
 const Container = styled.div<{ bgColor: string }>`
-  background-color: ${({ bgColor }) => Utils.isWeb() ? bgColor : 'transparent'};
+  background-color: ${({ bgColor }) => (Utils.isWeb() ? bgColor : 'transparent')};
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -75,12 +75,12 @@ const NewButtonClass = css`
 
 const Window: React.FC<WindowProps> = ({
   children,
-  onPrevious
+  onPrevious,
 }) => {
   const navigate = useNavigate();
   const rootRef = useRef();
   const dispatch = useDispatch();
-  
+
   return (
     <>
       <Container bgColor={Utils.getStyles().background_main} ref={rootRef}>

@@ -8,7 +8,6 @@ import { actions as mainActions } from '@app/containers/Main/store/index';
 import { navigate, setSystemState } from '@app/shared/store/actions';
 import Utils from '@core/utils.js';
 import store from '../../../index';
-import { SharedStateType } from '../interface';
 
 export function remoteEventChannel() {
   return eventChannel((emitter) => {
@@ -27,7 +26,8 @@ export function remoteEventChannel() {
         Utils.callApi('ev_subunsub', { ev_txs_changed: true, ev_system_state: true },
           (error, result, full) => {
             if (result) {
-              // action
+              store.dispatch(mainActions.loadAppParams.request(bytes));
+              store.dispatch(mainActions.loadUserView.request(null));
             }
           });
       });

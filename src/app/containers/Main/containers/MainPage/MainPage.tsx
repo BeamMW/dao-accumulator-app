@@ -1,6 +1,8 @@
 import React from 'react';
 import { styled } from '@linaria/react';
-import { Window } from '@app/shared/components';
+import { Button, Window } from '@app/shared/components';
+import { useDispatch } from 'react-redux';
+import { actions } from '@app/containers/Main/store';
 
 const Container = styled.div`
   display: flex;
@@ -10,14 +12,23 @@ const Container = styled.div`
   color: white;
 `;
 
-const MainPage: React.FC = () => (
-  <>
-    <Window>
-      <Container>
-        BEAM DAO ACCUMULATOR
-      </Container>
-    </Window>
-  </>
-);
+const MainPage: React.FC = () => {
+  const dispatch = useDispatch();
+  return (
+    <>
+      <Window>
+        <Container>
+          <Button onClick={
+              () => (dispatch(actions.addUserPrePhase.request({ amountBeamX: 100, lockPeriods: 0 })))
+        }
+          >
+            {' '}
+            Lock
+          </Button>
+        </Container>
+      </Window>
+    </>
+  );
+};
 
 export default MainPage;

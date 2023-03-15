@@ -1,31 +1,46 @@
-import { call, put, takeLatest, select } from 'redux-saga/effects';
-import { navigate } from '@app/shared/store/actions';
-import { ROUTES } from '@app/shared/constants';
-import { LoadFromContract} from '@core/api';
+import { call, put, takeLatest } from 'redux-saga/effects';
+import { UserLockPrePhase, UserView, ViewParams } from '@core/api';
+import { IViewParams } from '@app/shared/interface';
 import { actions } from '.';
-import store from '../../../../index';
-import { setIsLoaded } from '@app/shared/store/actions';
-import { selectIsLoaded } from '@app/shared/store/selectors';
-
 
 export function* loadParamsSaga(
-    action: ReturnType<typeof actions.loadFromContract.request>,
-  ): Generator {
-    try {
-      const pkey = yield call(LoadFromContract, action.payload ? action.payload : null);
-      const isLoaded = yield select(selectIsLoaded());
-      if (!isLoaded) {
-        store.dispatch(setIsLoaded(true));
-        yield put(navigate(ROUTES.MAIN.MAIN_PAGE));
-      }
-    } catch (e) {
-      yield put(actions.loadFromContract.failure(e));
-    }
+  action: ReturnType<typeof actions.loadAppParams.request>,
+): Generator {
+  try {
+    const params = (yield call(ViewParams, action.payload ? action.payload : null)) as IViewParams;
+    yield put(actions.setAppParams(params));
+  } catch (e) {
+    yield put(actions.loadAppParams.failure(e));
+  }
+}
+export function* loadUserView(
+  action: ReturnType<typeof actions.loadUserView.request>,
+): Generator {
+  try {
+    const params = (yield call(UserView, action.payload ? action.payload : null));
+    console.log(params);
+  } catch (e) {
+    console.log(e);
+    yield put(actions.loadUserView.failure(e));
+  }
+}
+export function* addUserLockPrePhase(
+  action: ReturnType<typeof actions.addUserPrePhase.request>,
+): Generator {
+  try {
+    // @ts-ignore
+    const params = (yield call(UserLockPrePhase, action.payload ? action.payload : null));
+    console.log(params);
+  } catch (e) {
+    console.error(e);
+    yield put(actions.addUserPrePhase.failure(e));
+  }
 }
 
-
 function* mainSaga() {
-    yield takeLatest(actions.loadFromContract.request, loadParamsSaga);
+  yield takeLatest(actions.loadAppParams.request, loadParamsSaga);
+  yield takeLatest(actions.loadUserView.request, loadUserView);
+  yield takeLatest(actions.addUserPrePhase.request, addUserLockPrePhase);
 }
 
 export default mainSaga;

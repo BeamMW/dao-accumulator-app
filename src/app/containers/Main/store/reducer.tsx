@@ -5,12 +5,12 @@ import * as actions from './actions';
 type Action = ActionType<typeof actions>;
 
 const initialState = {
-  someData: [],
+  params: [],
 };
 
 const reducer = createReducer<any, Action>(initialState)
-  .handleAction(actions.loadSomeData, (state, action) => produce(state, (nexState) => {
-    nexState.someData = action.payload;
+  .handleAction(actions.setAppParams, (state, action) => produce(state, (nexState) => {
+    nexState.params = action.payload;
   }));
 
 export { reducer as MainReducer };

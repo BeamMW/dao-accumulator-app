@@ -1,12 +1,22 @@
 import { createAsyncAction, createAction } from 'typesafe-actions';
+import { IViewParams } from '@app/shared/interface';
+import { MainActionsTypes } from '@app/shared/constants/constants';
+import { IUserViewPrePhase } from '@app/shared/interface/Request';
 
-export const loadSomeData = createAction('@@MAIN/SET_BRIDGE_TRANSACTIONS')<any>();
+export const setAppParams = createAction(MainActionsTypes.SET_VIEW_PARAMS)<IViewParams>();
 
-export const loadFromContract = createAsyncAction(
-    '@@MAIN/LOAD_PARAMS',
-    '@@MAIN/LOAD_PARAMS_SUCCESS',
-    '@@MAIN/LOAD_PARAMS_FAILURE',
+export const loadAppParams = createAsyncAction(
+  MainActionsTypes.LOAD_PARAMS,
+  MainActionsTypes.LOAD_PARAMS_SUCCESS,
+  MainActionsTypes.LOAD_PARAMS_FAILURE,
 )<ArrayBuffer, any, any>();
-
-
-
+export const loadUserView = createAsyncAction(
+  MainActionsTypes.LOAD_USER_VIEW,
+  MainActionsTypes.LOAD_USER_VIEW_SUCCESS,
+  MainActionsTypes.LOAD_USER_VIEW_FAILURE,
+)<ArrayBuffer, any, any>();
+export const addUserPrePhase = createAsyncAction(
+  MainActionsTypes.ADD_USER_PREPHASE,
+  MainActionsTypes.ADD_USER_PREPHASE_SUCCESS,
+  MainActionsTypes.ADD_USER_PREPHASE_FAILURE,
+)<IUserViewPrePhase>();
