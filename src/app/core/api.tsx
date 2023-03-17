@@ -32,7 +32,7 @@ export function UserView<T = any>(payload): Promise<T> {
     Utils.invokeContract(`action=user_view, cid=${CID}`,
       (error, result, full) => {
         if (!error) {
-          resolve(result);
+          resolve(result.res);
         } else reject(error.error);
       }, payload || null);
   });
@@ -43,7 +43,7 @@ export function UserLockPrePhase<T = any>({ amountBeamX, lockPeriods }:IUserView
     Utils.invokeContract(`
     action=user_lock_prephase,
     cid=${CID},
-    amountBeamX=${amountBeamX} 
+    amountBeamX=${amountBeamX},
     lockPeriods=${lockPeriods}`,
     (error, result, full) => {
       if (!error) {

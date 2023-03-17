@@ -8,6 +8,7 @@ import { actions as mainActions } from '@app/containers/Main/store/index';
 import { navigate, setSystemState } from '@app/shared/store/actions';
 import Utils from '@core/utils.js';
 import store from '../../../index';
+import {setUserView} from '@app/containers/Main/store/actions';
 
 export function remoteEventChannel() {
   return eventChannel((emitter) => {
@@ -50,7 +51,8 @@ function* sharedSaga() {
       switch (payload.id) {
         case 'ev_system_state':
           store.dispatch(setSystemState(payload.result));
-
+          store.dispatch(mainActions.loadAppParams.request(null));
+          store.dispatch(mainActions.loadUserView.request(null));
           break;
         default:
           break;

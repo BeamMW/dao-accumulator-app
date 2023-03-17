@@ -206,7 +206,7 @@ export default class Utils {
       params,
     };
 
-    // console.log(Utils.formatJSON(request))
+    console.log(Utils.formatJSON(request))
     if (Utils.isHeadless()) {
       return BEAM.api.callWalletApi(JSON.stringify(request));
     }

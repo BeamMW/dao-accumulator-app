@@ -1,9 +1,10 @@
 import { createAsyncAction, createAction } from 'typesafe-actions';
-import { IViewParams } from '@app/shared/interface';
+import {IUserView, IViewParams} from '@app/shared/interface';
 import { MainActionsTypes } from '@app/shared/constants/constants';
 import { IUserViewPrePhase } from '@app/shared/interface/Request';
 
 export const setAppParams = createAction(MainActionsTypes.SET_VIEW_PARAMS)<IViewParams>();
+export const setUserView = createAction(MainActionsTypes.SET_USER_VIEW)<IUserView>();
 
 export const loadAppParams = createAsyncAction(
   MainActionsTypes.LOAD_PARAMS,

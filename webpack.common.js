@@ -8,7 +8,7 @@ module.exports = {
   mode: 'development',
   devtool: 'eval-source-map',
   devServer: {
-    port: 13666
+    port: 13666,
   },
   entry: {
     index: path.join(__dirname, './src/index.tsx'),
@@ -46,8 +46,29 @@ module.exports = {
       }, {
         test: /\.json$/,
         loader: 'json-loader',
-        include: '/build/contracts/'
-      }
+        include: '/build/contracts/',
+      },
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -62,10 +83,15 @@ module.exports = {
           context: 'public',
         },
         {
+          from: path.join(__dirname, 'src/assets'),
+          to: path.join(__dirname, 'html/assets'),
+          context: 'public',
+        },
+        {
           from: path.join(__dirname, 'src/index.html'),
           to: path.join(__dirname, 'html'),
           context: 'public',
-        }
+        },
       ],
     }),
   ],

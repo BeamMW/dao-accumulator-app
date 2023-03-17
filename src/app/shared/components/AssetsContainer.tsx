@@ -9,6 +9,7 @@ const SectionStyled = styled.div<SectionProps>`
   justify-content: ${({ variant }) => variant || 'space-between'};
   width: 914px;
   position: relative;
+  margin-bottom: 20px;
 `;
 const AssetsContainer: React.FC<SectionProps> = ({ children, variant = 'space-between' }) => (
   <SectionStyled variant={variant}>{children}</SectionStyled>

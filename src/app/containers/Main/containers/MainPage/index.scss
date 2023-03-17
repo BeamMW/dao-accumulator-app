@@ -1,0 +1,81 @@
+.custom-select {
+  &__control {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border: none !important;
+    border-radius: 10px;
+    max-width: 412px !important;
+    width: 100% !important;
+    min-width: 300px !important;
+    height: 56px !important;
+    &--menu-is-open {
+      box-shadow: (0 0 0 1px) var(--color-green) !important;
+    }
+  }
+  &__input-container {
+    color: white !important;
+  }
+  &__input-container--has-value {
+    color: white !important;
+    height: 38px;
+  }
+  &__indicator-separator {
+    display: none;
+  }
+  &__indicators {
+    padding: 8px 16px 7px 0 !important;
+  }
+  &__indicator,
+  &__indicator-clear-value {
+    padding: 0 !important;
+  }
+  &__menu {
+    background-color: var(--color-select-list) !important;
+    //box-shadow:( 0 0 0 1px ) var(--color-green) !important;
+    border-radius: 20px !important;
+    padding: 20px !important;
+
+    &-list::-webkit-scrollbar {
+      width: 4px;
+      height: 0;
+    }
+    &-list::-webkit-scrollbar-track {
+      background-color: rgba(255, 255, 255, 0.2) !important;
+      border-radius: 3px !important;
+    }
+    &-list::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.2) !important;
+      border-radius: 3px !important;
+    }
+    &-list::-webkit-scrollbar-thumb:hover {
+      background: var(--color-green) !important;
+      border-radius: 3px !important;
+    }
+  }
+  &__option {
+    padding: 0;
+    margin-bottom: 20px !important;
+    &--is-focused,
+    &--is-selected {
+      background-color: transparent !important;
+      color: var(--color-green) !important;
+      cursor: pointer !important;
+    }
+  }
+  &__single-value {
+    font-family: 'ProximaNova', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+    color: white !important;
+    text-transform: uppercase;
+  }
+  &__placeholder {
+    font-family: 'ProximaNova', sans-serif !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 20px !important;
+    line-height: 20px !important;
+    color: white !important;
+  }
+}

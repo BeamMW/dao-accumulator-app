@@ -1,12 +1,13 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { UserLockPrePhase, UserView, ViewParams } from '@core/api';
-import { IViewParams } from '@app/shared/interface';
+import { IUserView, IViewParams } from '@app/shared/interface';
 import { actions } from '.';
 
 export function* loadParamsSaga(
   action: ReturnType<typeof actions.loadAppParams.request>,
 ): Generator {
   try {
+    console.log(1)
     const params = (yield call(ViewParams, action.payload ? action.payload : null)) as IViewParams;
     yield put(actions.setAppParams(params));
   } catch (e) {
@@ -17,10 +18,10 @@ export function* loadUserView(
   action: ReturnType<typeof actions.loadUserView.request>,
 ): Generator {
   try {
-    const params = (yield call(UserView, action.payload ? action.payload : null));
-    console.log(params);
+    console.log(2)
+    const balance = (yield call(UserView, action.payload ? action.payload : null)) as IUserView;
+    yield put(actions.setUserView(balance));
   } catch (e) {
-    console.log(e);
     yield put(actions.loadUserView.failure(e));
   }
 }
