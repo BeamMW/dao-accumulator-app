@@ -1,5 +1,5 @@
 import Utils from '@core/utils.js';
-import { IUserViewPrePhase } from '@app/shared/interface/Request';
+import { IUserUpdate, IUserViewPrePhase } from '@app/shared/interface/Request';
 
 const dappnet = '0a20bfecffab04a8c49614c5054c043e80c09b4cbfe215182b97597b03e70694';
 const CID = dappnet;
@@ -45,6 +45,28 @@ export function UserLockPrePhase<T = any>({ amountBeamX, lockPeriods }:IUserView
     cid=${CID},
     amountBeamX=${amountBeamX},
     lockPeriods=${lockPeriods}`,
+    (error, result, full) => {
+      if (!error) {
+        onMakeTx(error, result, full).then((res) => {
+          if (res) {
+            resolve(res);
+          }
+          resolve(result);
+        });
+      } else {
+        reject(error.error);
+      }
+    });
+  });
+}
+export function UserUpdate<T = any>({ amountBeamX, amountLpToken, bLockOrUnlock }:IUserUpdate): Promise<T> {
+  return new Promise((resolve, reject) => {
+    Utils.invokeContract(`
+    action=user_update,
+    cid=${CID},
+    amountBeamX=${amountBeamX},
+    amountLpToken=${amountLpToken},
+    bLockOrUnlock=${bLockOrUnlock}`,
     (error, result, full) => {
       if (!error) {
         onMakeTx(error, result, full).then((res) => {

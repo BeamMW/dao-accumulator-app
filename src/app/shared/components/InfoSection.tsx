@@ -1,11 +1,13 @@
-import React from 'react';
-import { IAsset, IPoolCard } from '@core/types';
+import React, { useMemo, useState } from 'react';
 import { Section } from '@app/shared/components/index';
-import AssetLabel from '@app/shared/components/AssetLabel';
-import { fromGroths, getLockPeriod, truncate } from '@core/appUtils';
+import {
+  fromGroths, getLockPeriod, getTime, getTVL, truncate,
+} from '@core/appUtils';
 import { styled } from '@linaria/react';
 import { IUserView } from '@app/shared/interface';
 import { BALANCE_TITLE } from '@app/shared/constants';
+import { useSelector } from 'react-redux';
+import { selectSystemState } from '@app/shared/store/selectors';
 
 interface PoolStatType {
   data: IUserView[];
@@ -48,6 +50,25 @@ const SideRightWrap = styled.div`
 `;
 
 const InfoSection = ({ data }:PoolStatType) => {
+  const { current_height } = useSelector(selectSystemState());
+  const [TVL, setTVL] = useState('0 BEAM / 0 BEAMX');
+  const [currentHeight, setCurrentHeight] = useState(0);
+  const [unclockDays, setUnlockDays] = useState('-');
+  useMemo(() => {
+    if (current_height) {
+      setCurrentHeight(current_height);
+    }
+  }, [current_height]);
+  useMemo(() => {
+    setTVL(getTVL(data['lpToken-pre']));
+  }, [data['lpToken-pre']]);
+  useMemo(() => {
+    if (currentHeight > 0) {
+      setUnlockDays(
+        getTime(data['unlock-height'], currentHeight),
+      );
+    } else setUnlockDays('...calculating');
+  }, [currentHeight]);
   return (
     <Section title="Balance">
       <AmountWrapper>
@@ -57,11 +78,11 @@ const InfoSection = ({ data }:PoolStatType) => {
           }
         </SideLeftWrap>
         <SideRightWrap>
-          <InfoText>{fromGroths(data['avail-BeamX'])}</InfoText>
+          <InfoText>{truncate(fromGroths(data['lpToken-pre']).toString(), 7)}</InfoText>
+          <InfoText>{TVL}</InfoText>
+          <InfoText>{truncate(fromGroths(data['avail-BeamX']).toString(), 7)}</InfoText>
           <InfoText>{getLockPeriod(data['lock-periods'])}</InfoText>
-          <InfoText>{fromGroths(data['lpToken-pre'])}</InfoText>
-          <InfoText>{fromGroths(data['lpToken-post'])}</InfoText>
-          <InfoText>{data['unlock-height']}</InfoText>
+          <InfoText>{unclockDays}</InfoText>
         </SideRightWrap>
       </AmountWrapper>
     </Section>

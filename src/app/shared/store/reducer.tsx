@@ -18,6 +18,8 @@ const initialState: SharedStateType = {
 const reducer = createReducer<SharedStateType, Action>(initialState)
   .handleAction(actions.navigate, (state, action) => produce(state, (nexState) => {
     nexState.routerLink = action.payload;
+  }))
+  .handleAction(actions.setSystemState, (state, action) => produce(state, (nexState) => {
+    nexState.systemState = action.payload;
   }));
-
 export { reducer as SharedReducer };

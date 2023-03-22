@@ -7,8 +7,8 @@ import { actions } from '@app/shared/store/index';
 import { actions as mainActions } from '@app/containers/Main/store/index';
 import { navigate, setSystemState } from '@app/shared/store/actions';
 import Utils from '@core/utils.js';
+import { setUserView } from '@app/containers/Main/store/actions';
 import store from '../../../index';
-import {setUserView} from '@app/containers/Main/store/actions';
 
 export function remoteEventChannel() {
   return eventChannel((emitter) => {
@@ -18,6 +18,7 @@ export function remoteEventChannel() {
       headless: false,
       apiResultHandler: (error, result, full) => {
         console.log('api result data: ', result, full);
+        console.log(result);
         if (!result.error) {
           emitter(full);
         }

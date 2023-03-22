@@ -1,5 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { UserLockPrePhase, UserView, ViewParams } from '@core/api';
+import {
+  UserLockPrePhase, UserUpdate, UserView, ViewParams,
+} from '@core/api';
 import { IUserView, IViewParams } from '@app/shared/interface';
 import { actions } from '.';
 
@@ -7,7 +9,7 @@ export function* loadParamsSaga(
   action: ReturnType<typeof actions.loadAppParams.request>,
 ): Generator {
   try {
-    console.log(1)
+    console.log(1);
     const params = (yield call(ViewParams, action.payload ? action.payload : null)) as IViewParams;
     yield put(actions.setAppParams(params));
   } catch (e) {
@@ -18,7 +20,7 @@ export function* loadUserView(
   action: ReturnType<typeof actions.loadUserView.request>,
 ): Generator {
   try {
-    console.log(2)
+    console.log(2);
     const balance = (yield call(UserView, action.payload ? action.payload : null)) as IUserView;
     yield put(actions.setUserView(balance));
   } catch (e) {
@@ -37,11 +39,24 @@ export function* addUserLockPrePhase(
     yield put(actions.addUserPrePhase.failure(e));
   }
 }
+export function* userUpdate(
+  action: ReturnType<typeof actions.userUpdate.request>,
+): Generator {
+  try {
+    // @ts-ignore
+    const params = (yield call(UserUpdate, action.payload ? action.payload : null));
+    console.log(params);
+  } catch (e) {
+    console.error(e);
+    yield put(actions.userUpdate.failure(e));
+  }
+}
 
 function* mainSaga() {
   yield takeLatest(actions.loadAppParams.request, loadParamsSaga);
   yield takeLatest(actions.loadUserView.request, loadUserView);
   yield takeLatest(actions.addUserPrePhase.request, addUserLockPrePhase);
+  yield takeLatest(actions.userUpdate.request, userUpdate);
 }
 
 export default mainSaga;

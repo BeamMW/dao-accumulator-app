@@ -20,9 +20,9 @@ export const LOCK_PERIOD_SELECT = [
   { value: LOCK_PERIOD_MONTH.TWELVE, label: '12 month' },
 ];
 export const BALANCE_TITLE = [
-  { title: 'BeamX:' },
+  { title: 'Early Bird LP Tokens:' },
+  { title: 'My Balance:' },
+  { title: 'Farmed BEAMX:'},
   { title: 'Lock period:' },
-  { title: 'Early Bird Stake' },
-  { title: 'Regular Stake' },
-  { title: 'Unlock Height' },
+  { title: 'Unlocking thought:' },
 ];
