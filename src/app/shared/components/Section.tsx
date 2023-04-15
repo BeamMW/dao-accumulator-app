@@ -8,18 +8,19 @@ interface SectionProps {
   title?: string;
   subtitle?: string;
   collapse?: boolean;
-  variant?: 'regular' | 'gray' | 'card' | 'exchange';
+  variant?: 'regular' | 'gray' | 'card' | 'exchange' | 'table';
   showAllAction?: () => void;
   defaultCollapseState?: boolean;
+  isFarming?: boolean
 }
 
-const SectionStyled = styled.div`
+const SectionStyled = styled.div<SectionProps>`
   position: relative;
   margin: 0;
   padding: 20px;
   text-align: left;
   background-color: rgba(255, 255, 255, 0.05);
-  max-width: 452px;
+  max-width: ${({ isFarming }) => (isFarming ? '914px' : '452px')};
   width: 100%;
   height: 100%;
   border-radius: 10px;
@@ -108,6 +109,11 @@ const TitleWrapper = styled.div`
   justify-content: space-between;
   margin-bottom: 20px;
 `;
+const SectionTableStyled = styled(SectionStyled)`
+  max-height: 200px;
+  height: 100%;
+  overflow: auto;
+`;
 
 const Section: React.FC<SectionProps> = ({
   title,
@@ -117,6 +123,7 @@ const Section: React.FC<SectionProps> = ({
   children,
   showAllAction,
   defaultCollapseState,
+  isFarming,
 }) => {
   const [hidden, setHidden] = useState(defaultCollapseState ?? collapse);
 
@@ -129,10 +136,11 @@ const Section: React.FC<SectionProps> = ({
     gray: SectionGrayStyled,
     card: SectionCardStyled,
     exchange: SectionExchangeStyled,
+    table: SectionTableStyled,
   }[variant];
 
   return (
-    <SectionComponent>
+    <SectionComponent isFarming={isFarming}>
       {collapse && (
         <ButtonStyled type="button" onMouseDown={handleMouseDown}>
           <Angle value={hidden ? 180 : 0} margin={hidden ? 3 : 3} />

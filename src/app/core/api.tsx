@@ -1,7 +1,9 @@
 import Utils from '@core/utils.js';
-import { IUserUpdate, IUserViewPrePhase } from '@app/shared/interface/Request';
+import { IUserGetYield, IUserUpdate, IUserViewPrePhase } from '@app/shared/interface/Request';
 
-const dappnet = '0a20bfecffab04a8c49614c5054c043e80c09b4cbfe215182b97597b03e70694';
+// const dappnet = '0a20bfecffab04a8c49614c5054c043e80c09b4cbfe215182b97597b03e70694';
+const dappnet = 'ae928370514fffe952ded36338b3a40326915ffa511b72c99f5e07aba2ee1ac3';
+// const dappnet = 'ce70c78febf95dabaef3bf820ce1557c49cf80854f54cbca5c17de03892e8559';
 const CID = dappnet;
 
 export function onMakeTx(err, sres, full, params: { id: number, vote: number } = null, toasted: string = null) {
@@ -38,12 +40,12 @@ export function UserView<T = any>(payload): Promise<T> {
   });
 }
 
-export function UserLockPrePhase<T = any>({ amountBeamX, lockPeriods }:IUserViewPrePhase): Promise<T> {
+export function UserLockPrePhase<T = any>({ amountLpToken, lockPeriods }:IUserViewPrePhase): Promise<T> {
   return new Promise((resolve, reject) => {
     Utils.invokeContract(`
-    action=user_lock_prephase,
+    action=user_lock,
     cid=${CID},
-    amountBeamX=${amountBeamX},
+    amountLpToken=${amountLpToken},
     lockPeriods=${lockPeriods}`,
     (error, result, full) => {
       if (!error) {
@@ -59,14 +61,14 @@ export function UserLockPrePhase<T = any>({ amountBeamX, lockPeriods }:IUserView
     });
   });
 }
-export function UserUpdate<T = any>({ amountBeamX, amountLpToken, bLockOrUnlock }:IUserUpdate): Promise<T> {
+export function UserUpdate<T = any>({ withdrawBeamX, withdrawLpToken, hEnd }:IUserUpdate): Promise<T> {
   return new Promise((resolve, reject) => {
     Utils.invokeContract(`
     action=user_update,
     cid=${CID},
-    amountBeamX=${amountBeamX},
-    amountLpToken=${amountLpToken},
-    bLockOrUnlock=${bLockOrUnlock}`,
+    withdrawBeamX=${withdrawBeamX},
+    withdrawLpToken=${withdrawLpToken},
+    hEnd=${hEnd}`,
     (error, result, full) => {
       if (!error) {
         onMakeTx(error, result, full).then((res) => {
@@ -75,6 +77,22 @@ export function UserUpdate<T = any>({ amountBeamX, amountLpToken, bLockOrUnlock 
           }
           resolve(result);
         });
+      } else {
+        reject(error.error);
+      }
+    });
+  });
+}
+export function UserGetYield<T = any>({ amountLpToken, lockPeriods }:IUserViewPrePhase): Promise<T> {
+  return new Promise((resolve, reject) => {
+    Utils.invokeContract(`
+    action=get_yield,
+    cid=${CID},
+    amountLpToken=${amountLpToken},
+    lockPeriods=${lockPeriods}`,
+    (error, result, full) => {
+      if (!error) {
+        resolve(result);
       } else {
         reject(error.error);
       }

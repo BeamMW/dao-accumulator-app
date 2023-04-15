@@ -3,7 +3,7 @@ import Select, { components, Props } from 'react-select';
 import AssetIcon from '@app/shared/components/AssetsIcon';
 import { CancelIcon, IconDropdownDown } from '@app/shared/icons';
 import { styled } from '@linaria/react';
-import {IOptions} from '@app/shared/interface';
+import { IOptions } from '@app/shared/interface';
 
 const AssetsId = styled.span`
   font-weight: 400;

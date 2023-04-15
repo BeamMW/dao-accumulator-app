@@ -27,13 +27,17 @@
   &__indicator,
   &__indicator-clear-value {
     padding: 0 !important;
+    cursor: pointer;
   }
   &__menu {
     background-color: var(--color-select-list) !important;
     //box-shadow:( 0 0 0 1px ) var(--color-green) !important;
     border-radius: 20px !important;
     padding: 20px !important;
-
+    text-transform: uppercase;
+    &-list{
+      max-height: 150px !important;
+    }
     &-list::-webkit-scrollbar {
       width: 4px;
       height: 0;

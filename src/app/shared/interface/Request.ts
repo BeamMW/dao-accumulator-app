@@ -1,9 +1,13 @@
 export interface IUserViewPrePhase {
   lockPeriods: number,
-  amountBeamX: number
+  amountLpToken: number
 }
 export interface IUserUpdate {
-  amountBeamX: number,
+  hEnd: number,
+  withdrawBeamX: number,
+  withdrawLpToken: number
+}
+export interface IUserGetYield {
   amountLpToken: number
-  bLockOrUnlock: number
+  lockPeriods: number
 }

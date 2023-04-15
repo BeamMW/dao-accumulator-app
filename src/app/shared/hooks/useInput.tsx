@@ -4,6 +4,7 @@ import { useValidation } from './useValidation';
 export function useInput({ initialValue, validations }) {
   const [value, setValue] = useState<number>(initialValue);
   const [isDirty, setDirty] = useState<boolean>(false);
+
   const valid = useValidation({ value, validations });
 
   // const valid = useValidation({ value, validations });
@@ -25,6 +26,6 @@ export function useInput({ initialValue, validations }) {
     onPredict,
     isDirty,
     onChangeBind,
-    ...valid
+    ...valid,
   };
 }

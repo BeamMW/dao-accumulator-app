@@ -23,7 +23,7 @@ const BaseButtonStyled = styled.button<ButtonProps>`
 const ButtonStyled = styled(BaseButtonStyled)`
   display: block;
   width: 100%;
-  max-width: 254px;
+  max-width: 200px;
   margin: 0 auto;
   margin-bottom: 10px;
   padding: 12px 24px;
@@ -94,9 +94,9 @@ const IconButtonStyled = styled(BaseButtonStyled)`
 `;
 
 const LinkButtonStyled = styled(IconButtonStyled)`
-  margin: 20px 0;
   font-size: 14px;
   font-weight: 700;
+  cursor: pointer;
   color: ${({ pallete }) => `var(--color-${pallete})`};
 `;
 

@@ -8,9 +8,9 @@ interface CellConfig {
 }
 
 interface TableProps {
-  keyBy: string;
+  keyBy?: string;
   data: any[];
-  config: CellConfig[];
+  config?: CellConfig[];
 }
 
 const isPositive = (value: number) => 1 / value > 0;

@@ -1,4 +1,4 @@
-import {IUserView, IViewParams} from '@app/shared/interface/Response';
+import { IUserView, IViewParams } from '@app/shared/interface/Response';
 
 export interface SharedStateType {
   routerLink: string;
@@ -9,7 +9,8 @@ export interface SharedStateType {
 
 export interface IDAOAccum {
   params: IViewParams[],
-  balance: IUserView[]
+  balance: IUserView[],
+  predict: number
 }
 
 export interface IValidations {
@@ -32,9 +33,16 @@ export interface IOptions {
   label: string;
 }
 export enum LOCK_PERIOD_MONTH {
-  NONE = 0,
-  THREE = 1,
-  SIX = 2,
-  NINE = 3,
-  TWELVE = 4,
+  ONE = 1,
+  TWO = 2,
+  THREE = 3,
+  FOUR = 4,
+  FIVE = 5,
+  SIX = 6,
+  SEVEN = 7,
+  EIGHT = 8,
+  NINE = 9,
+  TEN = 10,
+  ELEVEN = 11,
+  TWELVE = 12,
 }

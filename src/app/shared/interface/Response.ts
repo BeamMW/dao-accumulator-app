@@ -10,4 +10,8 @@ export interface IUserView {
   ['lpToken-post']: number
   ['lpToken-pre']: number
   ['unlock-height']: number
+  lpToken: number
+}
+export interface IPredict {
+  daily_reward: number
 }

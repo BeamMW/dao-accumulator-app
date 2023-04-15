@@ -22,24 +22,24 @@ export function truncate(value: string, len = LENGTH_MAX): string {
   return `${value.slice(0, len)}…`;
 }
 export const getLockPeriod = (period: number) => {
-  let lockPeriod = null;
+  let lockPeriod = '-';
 
   if (period === LOCK_PERIOD_MONTH.NONE) {
     lockPeriod = 'none';
   }
 
   if (period === LOCK_PERIOD_MONTH.THREE) {
-    lockPeriod = '3 month';
+    lockPeriod = '3 months';
   }
 
   if (period === LOCK_PERIOD_MONTH.SIX) {
-    lockPeriod = '6 month';
+    lockPeriod = '6 months';
   }
   if (period === LOCK_PERIOD_MONTH.NINE) {
-    lockPeriod = '9 month';
+    lockPeriod = '9 months';
   }
   if (period === LOCK_PERIOD_MONTH.TWELVE) {
-    lockPeriod = '12 month';
+    lockPeriod = '12 months';
   }
 
   return lockPeriod;
@@ -73,7 +73,7 @@ export function getDays(willHeight: number, currentHeight: number): string {
 export function getTime(futureHeight: number, currentHeight: number): string {
   // Check if the parameters are valid numbers
   if (isNaN(futureHeight) || isNaN(currentHeight)) {
-    return '...calculating';
+    return '-';
   }
   // Calculate the difference between future height and current height
   const diff = futureHeight - currentHeight;
@@ -85,7 +85,10 @@ export function getTime(futureHeight: number, currentHeight: number): string {
   // Calculate the time in minutes by multiplying the difference by one
   const time = diff * 1;
   const mon = Math.ceil(((time / 60) / 24));
+  const DAYS = mon === 1 ? 'day' : 'days';
+  if (mon === 0) {
+    return 'lock period ended';
+  }
   // If more than one month away, convert the time in minutes to months by dividing by 43200 (60 * 24 *30) and return the months rounded up to the nearest integer
-  return ` about ${mon} days`;
+  return `~${mon} ${DAYS} (${futureHeight})`;
 }
-
