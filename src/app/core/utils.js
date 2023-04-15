@@ -92,7 +92,7 @@ export default class Utils {
 
     client.subscribe((response) => {
       const err = `Unexpected wasm wallet client response call: ${response}`;
-      console.log(err);
+      // console.log(err);
       throw err;
     });
 

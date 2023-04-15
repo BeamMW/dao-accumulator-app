@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import {
-  Button, Section, Window, Input, Container, ReactSelect, InfoSection, ListLocks, Table,
+  Button, Section, Window, Input, Container, ReactSelect, ListLocks,
 } from '@app/shared/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '@app/containers/Main/store';
@@ -20,7 +20,7 @@ import AssetsContainer from '@app/shared/components/AssetsContainer';
 import { useInput } from '@app/shared/hooks';
 import { fromGroths, toGroths } from '@core/appUtils';
 import { styled } from '@linaria/react';
-import {IOptions, IUserView, LOCK_PERIOD_MONTH} from '@app/shared/interface';
+import { IOptions, IUserView, LOCK_PERIOD_MONTH } from '@app/shared/interface';
 import './index.scss';
 import { selectCurrentBalance, selectPredict } from '@app/containers/Main/store/selectors';
 import { IUserUpdate, IUserViewPrePhase } from '@app/shared/interface/Request';
@@ -112,7 +112,7 @@ const MainPage: React.FC = () => {
     dispatch(actions.addUserPrePhase.request(data));
     clearInput();
   };
- console.log(currentLockPeriod)
+
   return (
     <>
       <Window>
@@ -192,7 +192,13 @@ const MainPage: React.FC = () => {
               </SectionWrapper>
             ) : null}
             {/* <InfoSection data={currentBalance} isFarming={isFarming} /> */}
-            <ListLocks data={currentBalance} isFarming={isFarming} TH={!isFarming ? TABLE_HEADERS : TABLE_HEADERS_FARMING} />
+            {getCurrentBalance.length ? (
+              <ListLocks
+                data={currentBalance}
+                isFarming={isFarming}
+                TH={!isFarming ? TABLE_HEADERS : TABLE_HEADERS_FARMING}
+              />
+            ) : null}
           </AssetsContainer>
           {!isFarming ? (
             <ButtonBlock>
