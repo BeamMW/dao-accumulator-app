@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Button, Section } from '@app/shared/components/index';
 import {
-  fromGroths, getLockPeriod, getTime, getTVL, truncate,
+  fromGroths, getTime, truncate,
 } from '@core/appUtils';
 import { styled } from '@linaria/react';
 import { IUserView } from '@app/shared/interface';
@@ -10,6 +10,7 @@ import { selectSystemState } from '@app/shared/store/selectors';
 import { ArrowUpIcon, IconFavoriteFilled } from '@app/shared/icons';
 import { actions } from '@app/containers/Main/store';
 import { IUserUpdate } from '@app/shared/interface/Request';
+import { WITHDRAW } from '@app/shared/constants';
 
 interface ListPeriodsStateType {
   data: IUserView[];
@@ -95,7 +96,7 @@ const ListLocks = ({ data, isFarming, TH }:ListPeriodsStateType) => {
                       icon={IconFavoriteFilled}
                       onClick={() => getWithdrawBeamX(
                         {
-                          withdrawBeamX: value['avail-BeamX'],
+                          withdrawBeamX: 1,
                           hEnd: value['unlock-height'],
                           withdrawLpToken: 0,
                         },
@@ -120,15 +121,16 @@ const ListLocks = ({ data, isFarming, TH }:ListPeriodsStateType) => {
                         {
                           withdrawBeamX: 0,
                           hEnd: value['unlock-height'],
-                          withdrawLpToken: value.lpToken,
+                          withdrawLpToken: 1,
                         },
                       )}
+                      disabled={getTime(value['unlock-height'], currentHeight) !== WITHDRAW || !value.lpToken}
                     >
                       WITHDRAW
                     </Button>
                   </TD>
                 ) : null}
-                <TD>{current_height ? getTime(value['unlock-height'], currentHeight) : '...calculating'}</TD>
+                <TD>{ value.lpToken ? current_height ? getTime(value['unlock-height'], currentHeight) : '...calculating' : '-'}</TD>
 
               </Tr>
             ))
