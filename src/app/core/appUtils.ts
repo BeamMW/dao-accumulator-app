@@ -1,4 +1,4 @@
-import { GROTHS_IN_BEAM } from '@app/shared/constants';
+import { GROTHS_IN_BEAM, WITHDRAW } from '@app/shared/constants';
 import { LOCK_PERIOD_MONTH } from '@app/shared/interface';
 
 const LENGTH_MAX = 6;
@@ -50,7 +50,6 @@ export const getTVL = (amountToken: number) => {
   const beamx = fromGroths((amountToken) / 2);
   return `${beam} BEAM / ${beamx} BEAMX`;
 };
-// 1781400 - 1649252
 
 export function getDays(willHeight: number, currentHeight: number): string {
   // Check if the parameters are valid numbers
@@ -77,10 +76,9 @@ export function getTime(futureHeight: number, currentHeight: number): string {
   }
   // Calculate the difference between future height and current height
   const diff = futureHeight - currentHeight;
-  console.log(diff);
   // Check if the difference is positive
   if (diff <= 0) {
-    return 'Future height must be greater than current height';
+    return WITHDRAW;
   }
   // Calculate the time in minutes by multiplying the difference by one
   const time = diff * 1;

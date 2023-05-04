@@ -1,10 +1,8 @@
 import Utils from '@core/utils.js';
-import { IUserGetYield, IUserUpdate, IUserViewPrePhase } from '@app/shared/interface/Request';
+import { IUserUpdate, IUserViewPrePhase } from '@app/shared/interface/Request';
 
-// const dappnet = '0a20bfecffab04a8c49614c5054c043e80c09b4cbfe215182b97597b03e70694';
-// const dappnet = 'ae928370514fffe952ded36338b3a40326915ffa511b72c99f5e07aba2ee1ac3';
+const dappnet = 'ae928370514fffe952ded36338b3a40326915ffa511b72c99f5e07aba2ee1ac3';
 const mainnet = 'ec160307c43bc3fc0c3a52d3e3d3dfd8101593e8cec7a907fc42c9f103aabbae';
-// const dappnet = 'ce70c78febf95dabaef3bf820ce1557c49cf80854f54cbca5c17de03892e8559';
 const CID = mainnet;
 
 export function onMakeTx(err, sres, full, params: { id: number, vote: number } = null, toasted: string = null) {
