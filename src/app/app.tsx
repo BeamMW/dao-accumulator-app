@@ -10,8 +10,10 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { ToastContainer } from 'react-toastify';
 import { Scrollbars } from 'react-custom-scrollbars';
+import { Loader } from '@app/shared/components';
+import Utils from '@core/utils.js';
+import { start } from '@app/shared/store/saga';
 import { MainContainer } from './containers/Main';
-
 import './styles';
 
 const trackStyle = css`
@@ -32,41 +34,48 @@ const App = () => {
   const content = useRoutes(routes);
   const navigate = useNavigate();
   const navigateURL = useSelector(sharedSelectors.selectRouterLink());
-
+  const isLoaded = useSelector(sharedSelectors.selectIsLoaded());
   useEffect(() => {
     if (navigateURL) {
       navigate(navigateURL);
       dispatch(sharedActions.navigate(''));
     }
   }, [navigateURL, dispatch, navigate]);
-
   return (
-    <Scrollbars
-      renderThumbVertical={(props) => <div {...props} className={trackStyle} />}
-    >
-      {content}
-      <ToastContainer
-        position="bottom-right"
-        autoClose={3000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        closeButton={false}
-        rtl={false}
-        pauseOnFocusLoss={false}
-        draggable={false}
-        pauseOnHover={false}
-        icon={false}
-        toastStyle={{
-          textAlign: 'center',
-          background: '#22536C',
-          color: 'white',
-          width: '90%',
-          margin: '0 auto 36px',
-          borderRadius: '10px',
-        }}
-      />
-    </Scrollbars>
+    <>
+      { isLoaded
+        ? (
+          <>
+            {Utils.isHeadless() ? Utils.showInformStrip(start) : null}
+            <Scrollbars
+              renderThumbVertical={(props) => <div {...props} className={trackStyle} />}
+            >
+              {content}
+              <ToastContainer
+                position="bottom-right"
+                autoClose={3000}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                closeButton={false}
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable={false}
+                pauseOnHover={false}
+                icon={false}
+                toastStyle={{
+                  textAlign: 'center',
+                  background: '#22536C',
+                  color: 'white',
+                  width: '90%',
+                  margin: '0 auto 36px',
+                  borderRadius: '10px',
+                }}
+              />
+            </Scrollbars>
+          </>
+        ) : <Loader />}
+    </>
   );
 };
 

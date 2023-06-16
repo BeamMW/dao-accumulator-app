@@ -30,6 +30,11 @@ const SectionWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  @media (max-width: 913px){
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+  }
 `;
 const ButtonBlock = styled.div`
   display: flex;

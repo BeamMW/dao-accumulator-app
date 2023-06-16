@@ -13,6 +13,7 @@ const SectionStyled = styled.div`
   border-radius: 10px;
   padding-right: 15px;
   background-color: rgba(255, 255, 255, 0.05);
+  
 `;
 const AssetsSection: React.FC = ({ children }) => <SectionStyled>{children}</SectionStyled>;
 

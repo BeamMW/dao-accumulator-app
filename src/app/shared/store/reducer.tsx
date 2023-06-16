@@ -21,5 +21,8 @@ const reducer = createReducer<SharedStateType, Action>(initialState)
   }))
   .handleAction(actions.setSystemState, (state, action) => produce(state, (nexState) => {
     nexState.systemState = action.payload;
+  }))
+  .handleAction(actions.setIsLoaded, (state, action) => produce(state, (nexState) => {
+    nexState.isLoaded = action.payload;
   }));
 export { reducer as SharedReducer };

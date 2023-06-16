@@ -5,6 +5,7 @@ import {
 } from '@core/api';
 import { IUserView, IViewParams } from '@app/shared/interface';
 import { toast } from 'react-toastify';
+import { actions as Shared } from '@app/shared/store/index';
 import { actions } from '.';
 
 export function* loadParamsSaga(
@@ -12,6 +13,7 @@ export function* loadParamsSaga(
 ): Generator {
   try {
     const params = (yield call(ViewParams, action.payload ? action.payload : null)) as IViewParams;
+    console.log(params);
     yield put(actions.setAppParams(params));
   } catch (e) {
     yield put(actions.loadAppParams.failure(e));

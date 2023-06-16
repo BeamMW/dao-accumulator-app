@@ -21,10 +21,18 @@ interface ListPeriodsStateType {
 const Table = styled.table`
   width: 100%;
   justify-content: center;
+  @media (max-width: 450px){
+    display: flex;
+    flex-direction: column;
+  }
 `;
 const Tr = styled.tr`
   text-align: center;
-  
+  @media (max-width: 450px){
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(255,255,255, 0.1);
+  }
 `;
 
 const TD = styled.td`

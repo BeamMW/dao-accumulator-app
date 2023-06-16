@@ -3,19 +3,33 @@ import {
 } from 'redux-saga/effects';
 
 import { eventChannel, END } from 'redux-saga';
-import { actions } from '@app/shared/store/index';
+import { actions as Shared, actions } from '@app/shared/store/index';
 import { actions as mainActions } from '@app/containers/Main/store/index';
 import { navigate, setSystemState } from '@app/shared/store/actions';
 import Utils from '@core/utils.js';
 import { setUserView } from '@app/containers/Main/store/actions';
 import store from '../../../index';
 
+export function start() {
+  Utils.download('./dao-accumulator.wasm', (err, bytes) => {
+    Utils.callApi('ev_subunsub', { ev_txs_changed: true, ev_system_state: true },
+      (error, result, full) => {
+        if (result) {
+          store.dispatch(mainActions.loadUserView.request(bytes));
+          store.dispatch(mainActions.loadAppParams.request(null));
+
+          store.dispatch(Shared.setIsLoaded(true));
+        }
+      });
+  });
+}
+
 export function remoteEventChannel() {
   return eventChannel((emitter) => {
     Utils.initialize({
       appname: 'BEAM DAO-ACCUMULATOR',
       min_api_version: '6.2',
-      headless: false,
+      headless: !Utils.iFrameDetection || !!Utils.isHeadless(),
       apiResultHandler: (error, result, full) => {
         console.log('api result data: ', result, full);
         console.log(result);
@@ -24,15 +38,7 @@ export function remoteEventChannel() {
         }
       },
     }, (err) => {
-      Utils.download('./dao-accumulator.wasm', (err, bytes) => {
-        Utils.callApi('ev_subunsub', { ev_txs_changed: true, ev_system_state: true },
-          (error, result, full) => {
-            if (result) {
-              store.dispatch(mainActions.loadAppParams.request(bytes));
-              store.dispatch(mainActions.loadUserView.request(null));
-            }
-          });
-      });
+      start();
     });
 
     const unsubscribe = () => {
