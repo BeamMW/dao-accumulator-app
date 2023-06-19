@@ -14,7 +14,8 @@ const headlessNode = 'eu-node02.dappnet.beam.mw:8200';
 // const headlessNode = 'eu-node01.mainnet.beam.mw:8200';
 let InitParams;
 
-const mediaQuery = window.matchMedia('(max-width: 480px)');
+const mediaQueryMX480 = window.matchMedia('(max-width: 480px)');
+const mediaQueryMX600 = window.matchMedia('(max-width: 600px)');
 
 export default class Utils {
   static iFrameDetection = window !== window.parent;
@@ -462,14 +463,7 @@ export default class Utils {
   }
 
   static getStyles() {
-    if (Utils.isAndroid()) {
-      console.log('Android');
-      if (window.BEAM && window.BEAM.style) {
-        console.log('getStyles');
-        console.log(window.BEAM.style.background_main);
-        return window.BEAM.style;
-      }
-    } else if (BEAM && BEAM.styles) {
+    if (BEAM && BEAM.styles) {
       // TODO: проборосить стили из мобайла и экстеншена
       return BEAM.styles;
     }
@@ -622,7 +616,8 @@ export default class Utils {
 
     loadContainer.style.textAlign = 'center';
     loadContainer.style.margin = '50px auto 0 auto';
-    loadContainer.style.width = '585px';
+    loadContainer.style.maxWidth = '1280px';
+    loadContainer.style.width = '100%';
     loadContainer.style.padding = '5%';
     loadContainer.style.borderRadius = '10px';
 
@@ -679,7 +674,7 @@ export default class Utils {
         reconnectButton.style.boxShadow = 'none';
       }, false);
 
-      reconnectButton.addEventListener('click', onReconnect);
+      reconnectButton.addEventListener('click', Utils.reload);
 
       const installButton = document.createElement('button');
       installButton.innerText = 'Install BEAM Web Wallet';
@@ -704,9 +699,17 @@ export default class Utils {
         installButton.style.boxShadow = 'none';
       }, false);
       installButton.style.marginLeft = '30px';
+      if (mediaQueryMX600.matches) {
+        installButton.style.marginLeft = '0';
+        installButton.style.marginTop = '20px';
+      }
 
       const controlsArea = document.createElement('div');
       controlsArea.style.marginTop = '50px';
+      if (mediaQueryMX600.matches) {
+        controlsArea.style.display = 'flex';
+        controlsArea.style.flexDirection = 'column';
+      }
 
       loadContainer.appendChild(controlsArea);
       controlsArea.appendChild(reconnectButton);
@@ -799,7 +802,7 @@ export default class Utils {
 
   static showInformStrip(reConnect) {
     const wrapperStrip = document.createElement('div');
-    if (mediaQuery.matches) {
+    if (mediaQueryMX480.matches) {
       wrapperStrip.style.flexDirection = 'column';
     } else {
       wrapperStrip.style.flexDirection = 'row';
@@ -813,7 +816,7 @@ export default class Utils {
     wrapperStrip.style.padding = '0.625rem';
     const text = document.createElement('span');
     text.innerText = `To use ${InitParams.appname} you should have BEAM Web Wallet installed and allow connection.`;
-    if (mediaQuery.matches) {
+    if (mediaQueryMX480.matches) {
       text.style.textAlign = 'center';
     }
     const wrapperButton = document.createElement('div');

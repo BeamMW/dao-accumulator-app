@@ -1,8 +1,6 @@
 import React, { useRef } from 'react';
 import { styled } from '@linaria/react';
 import Utils from '@core/utils.js';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import { css } from '@linaria/core';
 
 interface WindowProps {

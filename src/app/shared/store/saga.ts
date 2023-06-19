@@ -27,7 +27,7 @@ export function start() {
 export function remoteEventChannel() {
   return eventChannel((emitter) => {
     Utils.initialize({
-      appname: 'BEAM DAO-ACCUMULATOR',
+      appname: 'Beam Liquidity Mining Dapp',
       min_api_version: '6.2',
       headless: !Utils.iFrameDetection || !!Utils.isHeadless(),
       apiResultHandler: (error, result, full) => {
