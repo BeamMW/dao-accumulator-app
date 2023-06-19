@@ -464,11 +464,10 @@ export default class Utils {
   static getStyles() {
     if (BEAM && BEAM.styles) {
       // TODO: проборосить стили из мобайла и экстеншена
-      return BEAM.getStyles();
-    }
-
-    if (Utils.isAndroid()) {
-      return window.BEAM.getStyles();
+      if (Utils.isAndroid()) {
+        return window.BEAM.getStyles();
+      }
+      return BEAM.styles;
     }
 
     return {
