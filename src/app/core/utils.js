@@ -466,6 +466,7 @@ export default class Utils {
     if ((BEAM && BEAM.styles) || (window.BEAM && window.BEAM.style)) {
       // TODO: проборосить стили из мобайла и экстеншена
       console.log('style');
+      console.log(window.BEAM);
       return window.BEAM.styles;
     }
 
