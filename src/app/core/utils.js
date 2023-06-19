@@ -467,7 +467,7 @@ export default class Utils {
       if (window.BEAM && window.BEAM.style) {
         console.log('getStyles');
         console.log(window.BEAM.style.background_main);
-        return window.BEAM.style();
+        return window.BEAM.style;
       }
     } else if (BEAM && BEAM.styles) {
       // TODO: проборосить стили из мобайла и экстеншена
