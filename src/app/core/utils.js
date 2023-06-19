@@ -45,10 +45,6 @@ export default class Utils {
     return Utils.is_mobile;
   }
 
-  static isCompact() {
-    return Utils.isMobile();
-  }
-
   static isDesktop() {
     if (Utils.is_desktop === undefined) {
       const ua = navigator.userAgent;
@@ -466,7 +462,7 @@ export default class Utils {
   }
 
   static getStyles() {
-    if (BEAM && BEAM.styles) {
+    if (BEAM && BEAM.styles && !Utils.isMobile()) {
       // TODO: проборосить стили из мобайла и экстеншена
       return BEAM.styles;
     }
@@ -489,10 +485,6 @@ export default class Utils {
 
     if (Utils.isWeb()) {
       document.body.classList.add('web');
-    }
-
-    if (Utils.isCompact()) {
-      document.body.classList.add('compact');
     }
   }
 
@@ -646,7 +638,7 @@ export default class Utils {
         loadContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
       }
     } else {
-      loadContainer.style.backgroundColor = 'transparent';
+      loadContainer.style.backgroundColor = 'rgba(3, 91, 133, 0.95)';
 
       titleElem = document.createElement('div');
       titleElem.style.fontSize = '25px';
