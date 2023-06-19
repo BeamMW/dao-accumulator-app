@@ -462,12 +462,14 @@ export default class Utils {
   }
 
   static getStyles() {
-    console.log('GetStyle');
-    if ((BEAM && BEAM.styles) || (window.BEAM && window.BEAM.style)) {
+    if (Utils.isAndroid()) {
+      if (window.BEAM && window.BEAM.getStyles) {
+        console.log('getStyles');
+        return window.BEAM.getStyles();
+      }
+    } else if (BEAM && BEAM.styles) {
       // TODO: проборосить стили из мобайла и экстеншена
-      console.log('style');
-      console.log(window.BEAM);
-      return window.BEAM.styles;
+      return BEAM.styles;
     }
 
     return {
