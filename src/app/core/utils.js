@@ -463,8 +463,10 @@ export default class Utils {
 
   static getStyles() {
     if (Utils.isAndroid()) {
-      if (window.BEAM && window.BEAM.getStyles) {
+      console.log('Android');
+      if (window.BEAM && window.BEAM.style) {
         console.log('getStyles');
+        console.log(window.BEAM.style.background_main);
         return window.BEAM.getStyles();
       }
     } else if (BEAM && BEAM.styles) {
