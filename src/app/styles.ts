@@ -92,7 +92,6 @@ css`
       margin: 0;
       padding: 0;
       height: 100%;
-      min-width: 375px;
       font-family: 'ProximaNova', 'SFProDisplay', sans-serif;
       font-weight: 600;
     }

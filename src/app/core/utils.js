@@ -412,10 +412,10 @@ export default class Utils {
         const apivermin = params.min_api_version || '';
         const { appname } = params;
 
-        if (!Utils.isChrome()) {
-          Utils.showChromeDownload();
-          return false;
-        }
+        // if (!Utils.isChrome()) {
+        //   Utils.showChromeDownload();
+        //   return false;
+        // }
 
         if (headless) {
           Utils.showLoading({

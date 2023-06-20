@@ -28,7 +28,7 @@ export function remoteEventChannel() {
   return eventChannel((emitter) => {
     Utils.initialize({
       appname: 'Beam Liquidity Mining Dapp',
-      min_api_version: '6.2',
+      min_api_version: '7.3',
       headless: !Utils.iFrameDetection || !!Utils.isHeadless(),
       apiResultHandler: (error, result, full) => {
         console.log('api result data: ', result, full);
