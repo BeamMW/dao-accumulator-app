@@ -74,7 +74,7 @@ const App = () => {
               />
             </Scrollbars>
           </>
-        ) : <Loader />}
+        ) : null}
     </>
   );
 };

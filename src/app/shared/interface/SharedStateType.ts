@@ -10,7 +10,8 @@ export interface SharedStateType {
 export interface IDAOAccum {
   params: IViewParams[],
   balance: IUserView[],
-  predict: number
+  predict: number,
+  isLoading: boolean
 }
 
 export interface IValidations {
