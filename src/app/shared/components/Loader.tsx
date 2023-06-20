@@ -1,5 +1,4 @@
 import React from 'react';
-import Logo from '@app/shared/components/Logo';
 import { styled } from '@linaria/react';
 import { IconLogo } from '@app/shared/icons';
 import { Container, Window } from '@app/shared/components/index';
