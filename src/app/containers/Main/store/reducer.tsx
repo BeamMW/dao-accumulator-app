@@ -9,6 +9,7 @@ const initialState: IDAOAccum = {
   params: [],
   balance: [],
   predict: 0,
+  isLoading: false,
 };
 
 const reducer = createReducer<any, Action>(initialState)
@@ -19,6 +20,9 @@ const reducer = createReducer<any, Action>(initialState)
     nexState.balance = action.payload;
   }))
   .handleAction(actions.setPredict, (state, action) => produce(state, (nexState) => {
+    nexState.predict = action.payload;
+  }))
+  .handleAction(actions.setLoading, (state, action) => produce(state, (nexState) => {
     nexState.predict = action.payload;
   }));
 

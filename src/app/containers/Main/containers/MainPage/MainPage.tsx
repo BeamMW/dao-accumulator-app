@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import {
-  Button, Section, Window, Input, Container, ReactSelect, ListLocks,
+  Button, Section, Window, Input, Container, ReactSelect, ListLocks, Loader,
 } from '@app/shared/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '@app/containers/Main/store';
@@ -22,7 +22,7 @@ import { fromGroths, toGroths } from '@core/appUtils';
 import { styled } from '@linaria/react';
 import { IOptions, IUserView, LOCK_PERIOD_MONTH } from '@app/shared/interface';
 import './index.scss';
-import { selectCurrentBalance, selectPredict } from '@app/containers/Main/store/selectors';
+import { selectCurrentBalance, selectIsLoading, selectPredict } from '@app/containers/Main/store/selectors';
 import { IUserUpdate, IUserViewPrePhase } from '@app/shared/interface/Request';
 import { ArrowDownIcon, ArrowUpIcon } from '@app/shared/icons';
 
@@ -30,6 +30,11 @@ const SectionWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+  @media (max-width: 913px){
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center;
+  }
 `;
 const ButtonBlock = styled.div`
   display: flex;
@@ -52,6 +57,7 @@ const MainPage: React.FC = () => {
   const [currentBalance, setCurrentBalance] = useState<IUserView[]>(getCurrentBalance);
   const [currentLockPeriod, setCurrentLockPeriod] = useState<IOptions | null>(null);
   const [requestDataLock, setRequestDataLock] = useState<IUserViewPrePhase>(null);
+  const isLoading = useSelector(selectIsLoading());
   const dispatch = useDispatch();
 
   useMemo(() => {
@@ -115,110 +121,112 @@ const MainPage: React.FC = () => {
 
   return (
     <>
-      <Window>
-        <Container>
-          {/* <Title variant="subtitle">Select Pair</Title> */}
-          <AssetsContainer>
-            <SectionWrapper>
-              <Section title={isFarming ? TITLE_SECTIONS.LOCK_AMOUNT_LP : TITLE_SECTIONS.LOCK_AMOUNT_BEAM}>
-                <AssetsSection>
-                  <Input
-                    variant="amount"
-                    pallete="purple"
-                    value={amountInputBeam.value}
-                    placeholder="0"
-                    onChange={isFarming ? (e) => amountInputBeam.onChange(e) : (e) => handleChangeInputBeam(e)}
-                    onFocus={() => !amountInputBeam.value && amountInputBeam.onChangeBind('')}
-                  />
-                  <AssetLabel title={isFarming ? 'AMML' : 'BEAM'} assets_id={isFarming ? LP_TOKEN_ASSET_ID : BEAM_ASSET_ID} />
-                </AssetsSection>
-                {isFarming && <InfoText>{`Rewards in day: ${amountInputBeam.value ? (+fromGroths(predictStore)).toFixed(8) : 0} BEAMX`}</InfoText>}
-              </Section>
-              {!isFarming ? (
-                <Section title={TITLE_SECTIONS.LOCK_AMOUNT_BEAMX}>
+      {isLoading ? <Loader /> : (
+        <Window>
+          <Container>
+            {/* <Title variant="subtitle">Select Pair</Title> */}
+            <AssetsContainer>
+              <SectionWrapper>
+                <Section title={isFarming ? TITLE_SECTIONS.LOCK_AMOUNT_LP : TITLE_SECTIONS.LOCK_AMOUNT_BEAM}>
                   <AssetsSection>
                     <Input
                       variant="amount"
                       pallete="purple"
-                      value={amountInputBeamX.value}
+                      value={amountInputBeam.value}
                       placeholder="0"
-                      onChange={isFarming ? (e) => amountInputBeamX.onChange(e) : (e) => handleChangeInputBeamX(e)}
-                      onFocus={() => !amountInputBeamX.value && amountInputBeam.onChangeBind('')}
+                      onChange={isFarming ? (e) => amountInputBeam.onChange(e) : (e) => handleChangeInputBeam(e)}
+                      onFocus={() => !amountInputBeam.value && amountInputBeam.onChangeBind('')}
                     />
-                    <AssetLabel title="BeamX" assets_id={BEAMX_ASSET_ID} />
+                    <AssetLabel title={isFarming ? 'AMML' : 'BEAM'} assets_id={isFarming ? LP_TOKEN_ASSET_ID : BEAM_ASSET_ID} />
                   </AssetsSection>
+                  {isFarming && <InfoText>{`Rewards in day: ${amountInputBeam.value ? (+fromGroths(predictStore)).toFixed(8) : 0} BEAMX`}</InfoText>}
                 </Section>
-              ) : (
-                <Section title={TITLE_SECTIONS.LOCK_PERIOD}>
-                  <div className="fees-wrapper">
-                    <ReactSelect
-                      options={LOCK_PERIOD_SELECT}
-                      onChange={(e) => setCurrentLockPeriod(e)}
-                      placeholder={PLACEHOLDER.SELECT_LOCK_MONTH}
-                      customPrefix="custom-select"
-                    />
-                  </div>
-                  {isFarming ? (
-                    <ButtonBlock>
-                      <Button
-                        style={{ marginTop: '25px' }}
-                        icon={ArrowDownIcon}
-                        disabled={!amountInputBeam.isValid || !currentLockPeriod}
-                        onClick={() => handleRequestLock(requestDataLock)}
-                      >
+                {!isFarming ? (
+                  <Section title={TITLE_SECTIONS.LOCK_AMOUNT_BEAMX}>
+                    <AssetsSection>
+                      <Input
+                        variant="amount"
+                        pallete="purple"
+                        value={amountInputBeamX.value}
+                        placeholder="0"
+                        onChange={isFarming ? (e) => amountInputBeamX.onChange(e) : (e) => handleChangeInputBeamX(e)}
+                        onFocus={() => !amountInputBeamX.value && amountInputBeam.onChangeBind('')}
+                      />
+                      <AssetLabel title="BeamX" assets_id={BEAMX_ASSET_ID} />
+                    </AssetsSection>
+                  </Section>
+                ) : (
+                  <Section title={TITLE_SECTIONS.LOCK_PERIOD}>
+                    <div className="fees-wrapper">
+                      <ReactSelect
+                        options={LOCK_PERIOD_SELECT}
+                        onChange={(e) => setCurrentLockPeriod(e)}
+                        placeholder={PLACEHOLDER.SELECT_LOCK_MONTH}
+                        customPrefix="custom-select"
+                      />
+                    </div>
+                    {isFarming ? (
+                      <ButtonBlock>
+                        <Button
+                          style={{ marginTop: '25px' }}
+                          icon={ArrowDownIcon}
+                          disabled={!amountInputBeam.isValid || !currentLockPeriod}
+                          onClick={() => handleRequestLock(requestDataLock)}
+                        >
 
-                        {' '}
-                        lock
-                      </Button>
-                    </ButtonBlock>
-                  ) : null}
-                </Section>
-              )}
-            </SectionWrapper>
-          </AssetsContainer>
-          <AssetsContainer>
-            {!isFarming ? (
-              <SectionWrapper>
-                <Section title={TITLE_SECTIONS.LOCK_PERIOD}>
-                  <div className="fees-wrapper">
-                    <ReactSelect
-                      options={LOCK_PERIOD_SELECT}
-                      onChange={(e) => setCurrentLockPeriod(e)}
-                      placeholder={PLACEHOLDER.SELECT_LOCK_MONTH}
-                      customPrefix="custom-select"
-                    />
-                  </div>
-                </Section>
+                          {' '}
+                          lock
+                        </Button>
+                      </ButtonBlock>
+                    ) : null}
+                  </Section>
+                )}
               </SectionWrapper>
-            ) : null}
-            {/* <InfoSection data={currentBalance} isFarming={isFarming} /> */}
-            {getCurrentBalance.length ? (
-              <ListLocks
-                data={currentBalance}
-                isFarming={isFarming}
-                TH={!isFarming ? TABLE_HEADERS : TABLE_HEADERS_FARMING}
-              />
-            ) : null}
-          </AssetsContainer>
-          {!isFarming ? (
-            <ButtonBlock>
-              <Button
-                // onClick={() => handleRequestFarmingLock({
-                //   ...requestDataFarming,
-                //   bLockOrUnlock: 1,
-                // })}
-                icon={ArrowDownIcon}
-                disabled={!amountInputBeam.isValid || !currentLockPeriod}
-                onClick={() => handleRequestLock(requestDataLock)}
-              >
+            </AssetsContainer>
+            <AssetsContainer>
+              {!isFarming ? (
+                <SectionWrapper>
+                  <Section title={TITLE_SECTIONS.LOCK_PERIOD}>
+                    <div className="fees-wrapper">
+                      <ReactSelect
+                        options={LOCK_PERIOD_SELECT}
+                        onChange={(e) => setCurrentLockPeriod(e)}
+                        placeholder={PLACEHOLDER.SELECT_LOCK_MONTH}
+                        customPrefix="custom-select"
+                      />
+                    </div>
+                  </Section>
+                </SectionWrapper>
+              ) : null}
+              {/* <InfoSection data={currentBalance} isFarming={isFarming} /> */}
+              {getCurrentBalance.length ? (
+                <ListLocks
+                  data={currentBalance}
+                  isFarming={isFarming}
+                  TH={!isFarming ? TABLE_HEADERS : TABLE_HEADERS_FARMING}
+                />
+              ) : null}
+            </AssetsContainer>
+            {!isFarming ? (
+              <ButtonBlock>
+                <Button
+                    // onClick={() => handleRequestFarmingLock({
+                    //   ...requestDataFarming,
+                    //   bLockOrUnlock: 1,
+                    // })}
+                  icon={ArrowDownIcon}
+                  disabled={!amountInputBeam.isValid || !currentLockPeriod}
+                  onClick={() => handleRequestLock(requestDataLock)}
+                >
 
-                {' '}
-                lock
-              </Button>
-            </ButtonBlock>
-          ) : null}
-        </Container>
-      </Window>
+                  {' '}
+                  lock
+                </Button>
+              </ButtonBlock>
+            ) : null}
+          </Container>
+        </Window>
+      )}
     </>
   );
 };

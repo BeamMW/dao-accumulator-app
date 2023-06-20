@@ -21,8 +21,10 @@ export function ViewParams<T = any>(payload): Promise<T> {
       (error, result, full) => {
         if (!error) {
           resolve(result.res);
+          console.log('res,', result);
         } else {
           reject(error.error);
+          console.log('error', error);
         }
       }, payload || null);
   });

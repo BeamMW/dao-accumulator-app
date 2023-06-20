@@ -13,6 +13,7 @@ export function* loadParamsSaga(
   try {
     const params = (yield call(ViewParams, action.payload ? action.payload : null)) as IViewParams;
     yield put(actions.setAppParams(params));
+    yield put(actions.setLoading(true));
   } catch (e) {
     yield put(actions.loadAppParams.failure(e));
   }
@@ -33,7 +34,6 @@ export function* addUserLockPrePhase(
   try {
     // @ts-ignore
     const params = (yield call(UserLockPrePhase, action.payload ? action.payload : null));
-    console.log(params);
   } catch (e) {
     console.log(e);
     if (e === 'pre-phase is over') {
@@ -48,7 +48,6 @@ export function* userUpdate(
   try {
     // @ts-ignore
     const params = (yield call(UserUpdate, action.payload ? action.payload : null));
-    console.log(params);
   } catch (e) {
     console.error(e);
     yield put(actions.userUpdate.failure(e));
@@ -60,7 +59,6 @@ export function* userGetYield(
   try {
     // @ts-ignore
     const res = (yield call(UserGetYield, action.payload ? action.payload : null));
-    console.log(res);
     yield put(actions.setPredict(res.res.reward));
   } catch (e) {
     console.error(e);
