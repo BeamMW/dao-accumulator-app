@@ -12,6 +12,10 @@ export interface IUserView {
   ['unlock-height']: number
   lpToken: number
 }
+export interface IBalanceFull {
+  res: IUserView[]
+  ['res-nph']: IUserView[]
+}
 export interface IPredict {
   daily_reward: number
 }

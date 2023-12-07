@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import {
-  Button, Section, Window, Input, Container, ReactSelect, ListLocks, Loader,
+  Button, Section, Window, Input, Container, ReactSelect, ListLocks, Loader, NavMenu,
 } from '@app/shared/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '@app/containers/Main/store';
@@ -11,18 +11,22 @@ import {
   BEAMX_ASSET_ID,
   FARMING_PERIOD,
   LOCK_PERIOD_SELECT,
-  LP_TOKEN_ASSET_ID,
+  LP_TOKEN_ASSET_ID, LP_TOKEN_ASSET_NPH_ID,
   PLACEHOLDER,
-  TABLE_HEADERS, TABLE_HEADERS_FARMING,
+  TABLE_HEADERS, TABLE_HEADERS_FARMING, TABLE_HEADERS_FARMING_NPH,
   TITLE_SECTIONS,
 } from '@app/shared/constants/common';
 import AssetsContainer from '@app/shared/components/AssetsContainer';
 import { useInput } from '@app/shared/hooks';
 import { fromGroths, toGroths } from '@core/appUtils';
 import { styled } from '@linaria/react';
-import { IOptions, IUserView, LOCK_PERIOD_MONTH } from '@app/shared/interface';
+import {
+  IBalanceFull, IOptions, IUserView, LOCK_PERIOD_MONTH,
+} from '@app/shared/interface';
 import './index.scss';
-import { selectCurrentBalance, selectIsLoading, selectPredict } from '@app/containers/Main/store/selectors';
+import {
+  selectCurrentBalance, selectIsLoading, selectIsNph, selectPredict,
+} from '@app/containers/Main/store/selectors';
 import { IUserUpdate, IUserViewPrePhase } from '@app/shared/interface/Request';
 import { ArrowDownIcon, ArrowUpIcon } from '@app/shared/icons';
 
@@ -49,20 +53,40 @@ const InfoText = styled.div`
   color: white;
   text-transform: uppercase;
 `;
+const WrapperMenu = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  @media (min-width: 914px)
+   {
+    width: 914px;
+    }
+`;
 
 const MainPage: React.FC = () => {
   const isFarming = FARMING_PERIOD;
-  const getCurrentBalance = useSelector(selectCurrentBalance());
+  const getCurrentBalance: IBalanceFull = useSelector(selectCurrentBalance());
+  const isNph = useSelector(selectIsNph());
+  const beamPool = getCurrentBalance && getCurrentBalance.res;
+  const nphPool = getCurrentBalance && getCurrentBalance['res-nph'];
   const predictStore = useSelector(selectPredict());
-  const [currentBalance, setCurrentBalance] = useState<IUserView[]>(getCurrentBalance);
+  const [currentBalance, setCurrentBalance] = useState<IUserView[]>([]);
   const [currentLockPeriod, setCurrentLockPeriod] = useState<IOptions | null>(null);
   const [requestDataLock, setRequestDataLock] = useState<IUserViewPrePhase>(null);
+  const [activeItem, setActiveItem] = useState<number>(1);
+  // const [isNph, setIsNph] = useState<boolean>(false);
   const isLoading = useSelector(selectIsLoading());
   const dispatch = useDispatch();
 
   useMemo(() => {
-    setCurrentBalance(getCurrentBalance);
-  }, [getCurrentBalance]);
+    if (getCurrentBalance) {
+      if (!isNph) {
+        setCurrentBalance(beamPool);
+      } else {
+        setCurrentBalance(nphPool);
+      }
+    }
+  }, [getCurrentBalance, isNph]);
   const amountInputBeam = useInput({
     initialValue: 0,
     validations: isFarming ? { isEmpty: true, isMax: fromGroths(currentBalance['lpToken-post']) } : { isEmpty: true },
@@ -73,20 +97,13 @@ const MainPage: React.FC = () => {
   });
 
   useMemo(() => {
-    // if (isFarming) {
-    //   setRequestDataFarming({
-    //     amountBeamX: toGroths(amountInputBeamX.value),
-    //     amountLpToken: toGroths(amountInputBeam.value),
-    //     bLockOrUnlock: 0,
-    //   });
-    dispatch(actions.userGetYield.request({ amountLpToken: toGroths(amountInputBeam.value), lockPeriods: currentLockPeriod && currentLockPeriod.value }));
-    // } else {
+    dispatch(actions.userGetYield.request({ amountLpToken: toGroths(amountInputBeam.value), lockPeriods: currentLockPeriod && currentLockPeriod.value, isNph: isNph ? 1 : 0 }));
     setRequestDataLock({
       amountLpToken: toGroths(amountInputBeam.value),
       lockPeriods: currentLockPeriod && currentLockPeriod.value,
+      isNph: isNph ? 1 : 0,
     });
-    // }
-  }, [amountInputBeamX.value, amountInputBeam.value, currentLockPeriod]);
+  }, [amountInputBeamX.value, amountInputBeam.value, currentLockPeriod, isNph]);
   const clearInput = () => {
     amountInputBeamX.onChangeBind(0);
     amountInputBeam.onChangeBind(0);
@@ -118,6 +135,26 @@ const MainPage: React.FC = () => {
     dispatch(actions.addUserPrePhase.request(data));
     clearInput();
   };
+  const handleActive = () => {
+    if (activeItem === 1) {
+      setActiveItem(2);
+    } else if (activeItem === 2) {
+      setActiveItem(1);
+    }
+  };
+
+  useEffect(() => {
+    switch (activeItem) {
+      case 1:
+        dispatch(actions.setIsNph(0));
+        return;
+      case 2:
+        dispatch(actions.setIsNph(1));
+        return;
+      default:
+        dispatch(actions.setIsNph(0));
+    }
+  }, [activeItem]);
 
   return (
     <>
@@ -125,9 +162,12 @@ const MainPage: React.FC = () => {
         <Window>
           <Container>
             {/* <Title variant="subtitle">Select Pair</Title> */}
+            <WrapperMenu>
+              <NavMenu onClick={handleActive} active={activeItem} />
+            </WrapperMenu>
             <AssetsContainer>
               <SectionWrapper>
-                <Section title={isFarming ? TITLE_SECTIONS.LOCK_AMOUNT_LP : TITLE_SECTIONS.LOCK_AMOUNT_BEAM}>
+                <Section title={isFarming && isNph ? TITLE_SECTIONS.LOCK_AMOUNT_LP_NPH : isFarming ? TITLE_SECTIONS.LOCK_AMOUNT_LP : TITLE_SECTIONS.LOCK_AMOUNT_BEAM}>
                   <AssetsSection>
                     <Input
                       variant="amount"
@@ -137,7 +177,7 @@ const MainPage: React.FC = () => {
                       onChange={isFarming ? (e) => amountInputBeam.onChange(e) : (e) => handleChangeInputBeam(e)}
                       onFocus={() => !amountInputBeam.value && amountInputBeam.onChangeBind('')}
                     />
-                    <AssetLabel title={isFarming ? 'AMML' : 'BEAM'} assets_id={isFarming ? LP_TOKEN_ASSET_ID : BEAM_ASSET_ID} />
+                    <AssetLabel title={isFarming ? 'AMML' : 'BEAM'} assets_id={isFarming && isNph ? LP_TOKEN_ASSET_NPH_ID : isFarming ? LP_TOKEN_ASSET_ID : BEAM_ASSET_ID} />
                   </AssetsSection>
                   {isFarming && <InfoText>{`Rewards in day: ${amountInputBeam.value ? (+fromGroths(predictStore)).toFixed(8) : 0} BEAMX`}</InfoText>}
                 </Section>
@@ -199,7 +239,7 @@ const MainPage: React.FC = () => {
                 </SectionWrapper>
               ) : null}
               {/* <InfoSection data={currentBalance} isFarming={isFarming} /> */}
-              {getCurrentBalance.length ? (
+              {getCurrentBalance ? (
                 <ListLocks
                   data={currentBalance}
                   isFarming={isFarming}

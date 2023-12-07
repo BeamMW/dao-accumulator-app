@@ -11,7 +11,7 @@ import { setUserView } from '@app/containers/Main/store/actions';
 import store from '../../../index';
 
 export function start() {
-  Utils.download('./dao-accumulator.wasm', (err, bytes) => {
+  Utils.download('./app.wasm', (err, bytes) => {
     Utils.callApi('ev_subunsub', { ev_txs_changed: true, ev_system_state: true },
       (error, result, full) => {
         if (result) {

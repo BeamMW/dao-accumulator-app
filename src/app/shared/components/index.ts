@@ -19,3 +19,4 @@ export { default as AssetLabel } from './AssetLabel';
 export { default as Container } from './Container';
 export { default as InfoSection } from './InfoSection';
 export { default as ListLocks } from './ListLocks';
+export { default as NavMenu } from './Nav-menu';

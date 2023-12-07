@@ -1,9 +1,9 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   UserGetYield,
-  UserLockPrePhase, UserUpdate, UserView, ViewParams,
+  UserLockPrePhase, UserUpdate, UserView, UserViewDeployd, ViewParams,
 } from '@core/api';
-import { IUserView, IViewParams } from '@app/shared/interface';
+import { IBalanceFull, IUserView, IViewParams } from '@app/shared/interface';
 import { toast } from 'react-toastify';
 import { actions } from '.';
 
@@ -22,7 +22,7 @@ export function* loadUserView(
   action: ReturnType<typeof actions.loadUserView.request>,
 ): Generator {
   try {
-    const balance = (yield call(UserView, action.payload ? action.payload : null)) as IUserView;
+    const balance = (yield call(UserView, action.payload ? action.payload : null)) as IBalanceFull;
     yield put(actions.setUserView(balance));
   } catch (e) {
     yield put(actions.loadUserView.failure(e));

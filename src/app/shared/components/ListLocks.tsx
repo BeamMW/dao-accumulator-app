@@ -11,6 +11,7 @@ import { ArrowUpIcon, IconFavoriteFilled } from '@app/shared/icons';
 import { actions } from '@app/containers/Main/store';
 import { IUserUpdate } from '@app/shared/interface/Request';
 import { WITHDRAW } from '@app/shared/constants';
+import { selectIsNph } from '@app/containers/Main/store/selectors';
 
 interface ListPeriodsStateType {
   data: IUserView[];
@@ -66,6 +67,7 @@ const Wrapper = styled.div`
 const ListLocks = ({ data, isFarming, TH }:ListPeriodsStateType) => {
   const { current_height } = useSelector(selectSystemState());
   const [currentHeight, setCurrentHeight] = useState(0);
+  const isNph = useSelector(selectIsNph());
 
   const dispatch = useDispatch();
 
@@ -107,6 +109,7 @@ const ListLocks = ({ data, isFarming, TH }:ListPeriodsStateType) => {
                           withdrawBeamX: 1,
                           hEnd: value['unlock-height'],
                           withdrawLpToken: 0,
+                          isNph,
                         },
                       )}
                     >
@@ -130,6 +133,7 @@ const ListLocks = ({ data, isFarming, TH }:ListPeriodsStateType) => {
                           withdrawBeamX: 0,
                           hEnd: value['unlock-height'],
                           withdrawLpToken: 1,
+                          isNph,
                         },
                       )}
                       disabled={getTime(value['unlock-height'], currentHeight) !== WITHDRAW || !value.lpToken}

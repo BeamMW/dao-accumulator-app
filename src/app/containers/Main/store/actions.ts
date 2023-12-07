@@ -1,12 +1,15 @@
 import { createAsyncAction, createAction } from 'typesafe-actions';
-import { IPredict, IUserView, IViewParams } from '@app/shared/interface';
+import {
+  IBalanceFull, IPredict, IUserView, IViewParams,
+} from '@app/shared/interface';
 import { MainActionsTypes } from '@app/shared/constants/constants';
 import { IUserGetYield, IUserUpdate, IUserViewPrePhase } from '@app/shared/interface/Request';
 
 export const setAppParams = createAction(MainActionsTypes.SET_VIEW_PARAMS)<IViewParams>();
-export const setUserView = createAction(MainActionsTypes.SET_USER_VIEW)<IUserView>();
+export const setUserView = createAction(MainActionsTypes.SET_USER_VIEW)<IBalanceFull>();
 export const setPredict = createAction(MainActionsTypes.SET_USER_GET_YIELD)<IPredict>();
-export const setLoading = createAction(MainActionsTypes.SET_IS_LOADING)<Boolean>();
+export const setLoading = createAction(MainActionsTypes.SET_IS_LOADING)<boolean>();
+export const setIsNph = createAction(MainActionsTypes.SET_IS_NPH)<number>();
 
 export const loadAppParams = createAsyncAction(
   MainActionsTypes.LOAD_PARAMS,

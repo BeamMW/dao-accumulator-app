@@ -7,9 +7,10 @@ type Action = ActionType<typeof actions>;
 
 const initialState: IDAOAccum = {
   params: [],
-  balance: [],
+  balance: null,
   predict: 0,
   isLoading: false,
+  isNph: 0,
 };
 
 const reducer = createReducer<any, Action>(initialState)
@@ -24,6 +25,8 @@ const reducer = createReducer<any, Action>(initialState)
   }))
   .handleAction(actions.setLoading, (state, action) => produce(state, (nexState) => {
     nexState.predict = action.payload;
+  }))
+  .handleAction(actions.setIsNph, (state, action) => produce(state, (nexState) => {
+    nexState.isNph = action.payload;
   }));
-
 export { reducer as MainReducer };

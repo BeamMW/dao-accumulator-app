@@ -4,12 +4,14 @@ export const FARMING_PERIOD = true;
 
 export const REG_AMOUNT = /^(?!0\d)(\d+)(\.)?(\d{0,8})?$/;
 export const BEAM_ASSET_ID = 0;
-export const BEAMX_ASSET_ID = 367;
+export const BEAMX_ASSET_ID = 7;
 export const LP_TOKEN_ASSET_ID = 385;
+export const LP_TOKEN_ASSET_NPH_ID = 60;
 export const GROTHS_IN_BEAM = 100000000;
 export const TITLE_SECTIONS = {
   LOCK_AMOUNT_BEAM: 'Beam',
-  LOCK_AMOUNT_LP: ' BeamX Pool LP Token',
+  LOCK_AMOUNT_LP: ' Beam / BeamX Pool LP Token',
+  LOCK_AMOUNT_LP_NPH: 'BEAM /  NPH Pool LP Token',
   LOCK_AMOUNT_BEAMX: 'BeamX',
   LOCK_PERIOD: 'Lock period',
 };
@@ -41,6 +43,13 @@ export enum BALANCE_TITLE {
 
 export const TABLE_HEADERS = [
   'LPToken',
+  'Unlock (Height)',
+];
+export const TABLE_HEADERS_FARMING_NPH = [
+  'NPH',
+  '',
+  'LPToken',
+  '',
   'Unlock (Height)',
 ];
 export const TABLE_HEADERS_FARMING = [

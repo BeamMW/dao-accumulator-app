@@ -1,17 +1,18 @@
-import { IUserView, IViewParams } from '@app/shared/interface/Response';
+import { IBalanceFull, IViewParams } from '@app/shared/interface/Response';
 
 export interface SharedStateType {
   routerLink: string;
   errorMessage: string | null;
   systemState: any;
-  isLoaded: boolean;
+  isLoaded: number;
 }
 
 export interface IDAOAccum {
   params: IViewParams[],
-  balance: IUserView[],
+  balance: IBalanceFull | null,
   predict: number,
-  isLoading: boolean
+  isLoading: boolean,
+  isNph: number
 }
 
 export interface IValidations {
