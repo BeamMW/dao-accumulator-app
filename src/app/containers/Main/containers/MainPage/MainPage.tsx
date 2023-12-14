@@ -179,7 +179,7 @@ const MainPage: React.FC = () => {
                     />
                     <AssetLabel title={isFarming ? 'AMML' : 'BEAM'} assets_id={isFarming && isNph ? LP_TOKEN_ASSET_NPH_ID : isFarming ? LP_TOKEN_ASSET_ID : BEAM_ASSET_ID} />
                   </AssetsSection>
-                  {isFarming && <InfoText>{`Rewards in day: ${amountInputBeam.value ? (+fromGroths(predictStore)).toFixed(8) : 0} BEAMX`}</InfoText>}
+                  {isFarming && <InfoText>{`Expected total rewards (at current conditions): ${amountInputBeam.value ? (+fromGroths(predictStore)).toFixed(8) : 0} BEAMX`}</InfoText>}
                 </Section>
                 {!isFarming ? (
                   <Section title={TITLE_SECTIONS.LOCK_AMOUNT_BEAMX}>
