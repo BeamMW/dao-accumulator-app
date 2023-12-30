@@ -42,7 +42,7 @@ const SortItemLink = styled.button<{ active: boolean }>`
 
 const NavMenu = ({ onClick, active }: NavMenuProps) => {
   const menu = [
-    { name: 'AMML', value: 1 },
+    { name: 'BEAMX', value: 1 },
     { name: 'Nephrite', value: 2 },
   ];
 
