@@ -93,10 +93,7 @@ export function UserGetYield<T = any>({ amountLpToken, lockPeriods, isNph }:IUse
   return new Promise((resolve, reject) => {
     Utils.invokeContract(`
     action=get_yield,
-    cid=${CID},
-    amountLpToken=${amountLpToken},
-    lockPeriods=${lockPeriods}
-    isNph: ${isNph}`,
+    cid=${CID}, amountLpToken=${amountLpToken},lockPeriods=${lockPeriods},isNph=${isNph}`,
     (error, result, full) => {
       if (!error) {
         resolve(result);
