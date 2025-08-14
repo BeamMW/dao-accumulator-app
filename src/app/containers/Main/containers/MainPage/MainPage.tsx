@@ -216,28 +216,25 @@ const MainPage: React.FC = () => {
                           customPrefix="custom-select"
                         />
                       </div>
-                      {isFarming ? (
-                        <ButtonBlock>
-                          <Button
-                            style={{ marginTop: '25px' }}
-                            icon={ArrowDownIcon}
-                            disabled={!amountInputBeam.isValid || !currentLockPeriod}
-                            onClick={() => handleRequestLock(requestDataLock)}
-                          >
-
-                            {' '}
-                            lock
-                          </Button>
-                        </ButtonBlock>
-                      ) : null}
+                      <ButtonBlock>
+                        <Button
+                          style={{ marginTop: '25px' }}
+                          icon={ArrowDownIcon}
+                          disabled={!amountInputBeam.isValid || !currentLockPeriod}
+                          onClick={() => handleRequestLock(requestDataLock)}
+                        >
+                          {' '}
+                          lock
+                        </Button>
+                      </ButtonBlock>
                     </Section>
                   )}
                 </SectionWrapper>
               )}
             </AssetsContainer>
             <AssetsContainer>
-              {isFarmingOver ? null : (
-                !isFarming ? (
+              {isFarmingOver && currentBalance.length === 0 ? null : (
+                !isFarming && !isFarmingOver ? (
                   <SectionWrapper>
                     <Section title={TITLE_SECTIONS.LOCK_PERIOD}>
                       <div className="fees-wrapper">
@@ -252,31 +249,14 @@ const MainPage: React.FC = () => {
                 ) : null
               )}
               {/* <InfoSection data={currentBalance} isFarming={isFarming} /> */}
-              {getCurrentBalance && !isFarmingOver ? (
+              {getCurrentBalance && !(isFarmingOver && currentBalance.length === 0) ? (
                 <ListLocks
                   data={currentBalance}
-                  isFarming={isFarming}
-                  TH={!isFarming ? TABLE_HEADERS : TABLE_HEADERS_FARMING}
+                  isFarming={true}
+                  TH={TABLE_HEADERS_FARMING}
                 />
               ) : null}
             </AssetsContainer>
-            {isFarming ? (
-              <ButtonBlock>
-                <Button
-                    // onClick={() => handleRequestFarmingLock({
-                    //   ...requestDataFarming,
-                    //   bLockOrUnlock: 1,
-                    // })}
-                  icon={ArrowDownIcon}
-                  disabled={!amountInputBeam.isValid || !currentLockPeriod}
-                  onClick={() => handleRequestLock(requestDataLock)}
-                >
-
-                  {' '}
-                  lock
-                </Button>
-              </ButtonBlock>
-            ) : null}
           </Container>
         </Window>
       )}
