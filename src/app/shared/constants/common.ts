@@ -1,6 +1,9 @@
 import { LOCK_PERIOD_MONTH } from '@app/shared/interface';
 
-export const FARMING_PERIOD = true;
+export const FARMING_PERIOD = {
+  BEAM_BEAMX: false,
+  BEAM_NPH: true
+};
 
 export const REG_AMOUNT = /^(?!0\d)(\d+)(\.)?(\d{0,8})?$/;
 export const BEAM_ASSET_ID = 0;
