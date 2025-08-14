@@ -113,6 +113,12 @@ const ReactSelect = ({
         IndicatorSeparator: () => null,
         SingleValue: SingleValues,
       }}
+      styles={{
+        control: (provided) => ({
+          ...provided,
+          borderRadius: '10px',
+        }),
+      }}
       {...rest}
     />
   );
