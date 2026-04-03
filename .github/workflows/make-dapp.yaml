@@ -76,6 +76,9 @@ jobs:
       with:
         node-version: ${{ inputs.node_version }}
 
+    - name: Enable Corepack (Yarn from packageManager)
+      run: corepack enable
+
     - name: Install dependencies
       run: yarn install
 
