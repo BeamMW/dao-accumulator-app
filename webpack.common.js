@@ -98,7 +98,7 @@ module.exports = {
           context: 'public',
         },
         {
-          from: path.join(__dirname, './node_modules/beam-wasm-client/'),
+          from: path.dirname(require.resolve('beam-wasm-client/package.json')),
           globOptions: {
             ignore: ['**/package.json', '**/README.md'],
           },

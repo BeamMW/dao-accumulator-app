@@ -3,6 +3,10 @@ export interface IViewParams {
   hPreEnd: number,
   ['locked-Beam']: number,
   ['locked-BeamX']: number,
+  ['farm-remaining-height']?: number,
+  ['farm-remaining-beamX']?: number,
+  ['farm-nph-remaining-height']?: number,
+  ['farm-nph-remaining-beamX']?: number,
 }
 export interface IUserView {
   ['avail-BeamX']: number

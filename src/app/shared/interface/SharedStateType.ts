@@ -8,7 +8,7 @@ export interface SharedStateType {
 }
 
 export interface IDAOAccum {
-  params: IViewParams[],
+  params: IViewParams | null,
   balance: IBalanceFull | null,
   predict: number,
   isLoading: boolean,

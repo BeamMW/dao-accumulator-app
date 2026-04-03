@@ -1,0 +1,20 @@
+name: Build and Package .dapp
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+jobs:
+  build:
+    uses: BeamMW/dao-accumulator-app/.github/workflows/make-dapp.yaml@master
+    with:
+      manifest_name: 'Liquidity Accumulatorr'
+      manifest_description: 'Liquidity Accumulator for BEAM / BEAMX | BEAM / NPH pair on Beam DEX'
+      manifest_version_prefix: "1.3"
+      manifest_guid: '7e9c916bc3444aadbd10232713be4525'
+      dapp_name: 'dao-accumulator-app'
+
+

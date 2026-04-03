@@ -1,7 +1,13 @@
 # dao-accumulator
 
-
+Run for dev:
 ```bash
-npm install
-npm run build
+yarn install
+yarn start
+```
+
+Build for prod:
+```bash
+yarn install
+yarn build:prod
 ```

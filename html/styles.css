@@ -1,6 +1,3 @@
-/*!**********************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/react-toastify/dist/ReactToastify.css ***!
-  \**********************************************************************************************************************************/
 :root {
   --toastify-color-light: #fff;
   --toastify-color-dark: #121212;
@@ -614,21 +611,10 @@
     transform: rotate(360deg);
   }
 }
-
-/*# sourceMappingURL=ReactToastify.css.map */
-/*!**************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/Window.tsx ***!
-  \**************************************************************************************************************************************************************************************************/
 .cvejpet{background-color:var(--cvejpet-0);min-height:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding:20px;}
 
-/*!*************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/Table.tsx ***!
-  \*************************************************************************************************************************************************************************************************/
 .hualcge{text-align:left;color:var(--hualcge-0);}
 
-/*!**************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/Button.tsx ***!
-  \**************************************************************************************************************************************************************************************************/
 .byymvqg[disabled]{opacity:0.5;}.byymvqg[disabled]:hover,.byymvqg[disabled]:active{box-shadow:none !important;cursor:not-allowed !important;}
 .bxwnet6.byymvqg{display:block;width:100%;max-width:200px;margin:0 auto;margin-bottom:10px;padding:12px 24px;border:none;border-radius:22px;background-color:var(--bxwnet6-0);text-align:center;font-weight:bold;font-size:16px;color:var(--color-dark-blue);}.bxwnet6.byymvqg:hover,.bxwnet6.byymvqg:active{box-shadow:0 0 8px white;cursor:pointer;}.bxwnet6.byymvqg > svg{vertical-align:sub;margin-right:10px;}
 .g1rqlpmm.bxwnet6.byymvqg{background-color:rgba(255,255,255,0.1);color:white;}.g1rqlpmm.bxwnet6.byymvqg:hover,.g1rqlpmm.bxwnet6.byymvqg:active{box-shadow:0 0 8px rgba(255,255,255,0.15);background-color:rgba(255,255,255,0.3);}
@@ -636,9 +622,6 @@
 .i5nnvrx.byymvqg{display:inline-block;vertical-align:sub;line-height:0;margin:0 10px;padding:0;background-color:transparent;border:none;cursor:pointer;color:var(--i5nnvrx-0);}.i5nnvrx.byymvqg > svg{vertical-align:sub;}
 .lr0lkmi.i5nnvrx.byymvqg{font-size:14px;font-weight:700;cursor:pointer;color:var(--lr0lkmi-0);}
 
-/*!*************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/Input.tsx ***!
-  \*************************************************************************************************************************************************************************************************/
 .cxdcu99{position:relative;margin-bottom:var(--cxdcu99-0);}
 .ic8mneu{width:100%;height:56px;padding:15px;border:none;outline:none;background-color:transparent;font-weight:400;font-size:36px;line-height:36px;color:white;border-radius:10px;}.ic8mneu::-webkit-input-placeholder{-webkit-transform:translateX(1px);-ms-transform:translateX(1px);transform:translateX(1px);opacity:0.2;font-weight:400;font-size:36px;line-height:36px;-webkit-letter-spacing:0.26px;-moz-letter-spacing:0.26px;-ms-letter-spacing:0.26px;letter-spacing:0.26px;color:#fff;}.ic8mneu::-moz-placeholder{-webkit-transform:translateX(1px);-ms-transform:translateX(1px);transform:translateX(1px);opacity:0.2;font-weight:400;font-size:36px;line-height:36px;-webkit-letter-spacing:0.26px;-moz-letter-spacing:0.26px;-ms-letter-spacing:0.26px;letter-spacing:0.26px;color:#fff;}.ic8mneu:-ms-input-placeholder{-webkit-transform:translateX(1px);-ms-transform:translateX(1px);transform:translateX(1px);opacity:0.2;font-weight:400;font-size:36px;line-height:36px;-webkit-letter-spacing:0.26px;-moz-letter-spacing:0.26px;-ms-letter-spacing:0.26px;letter-spacing:0.26px;color:#fff;}.ic8mneu::placeholder{-webkit-transform:translateX(1px);-ms-transform:translateX(1px);transform:translateX(1px);opacity:0.2;font-weight:400;font-size:36px;line-height:36px;-webkit-letter-spacing:0.26px;-moz-letter-spacing:0.26px;-ms-letter-spacing:0.26px;letter-spacing:0.26px;color:#fff;}.ic8mneu::-webkit-outer-spin-button,.ic8mneu::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}.ic8mneu[disabled]{opacity:0.5;cursor:not-allowed;}.ic8mneu.invalid{background-color:rgba(255,116,107,0.15);color:#ff625c;}
 .i1ysrc3i.ic8mneu{border-color:var(--i1ysrc3i-0);}
@@ -647,31 +630,16 @@
 .l1852szz{margin-top:4px;font-family:'SFProDisplay',sans-serif;font-size:14px;font-style:italic;color:var(--l1852szz-0);}
 .mwukwal{position:absolute;z-index:3;top:12px;right:12px;margin:0;}
 
-/*!******************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/BackButton.tsx ***!
-  \******************************************************************************************************************************************************************************************************/
 .b15l1cwc{position:fixed;z-index:3;top:73px;left:15px;}
 
-/*!**************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/Footer.tsx ***!
-  \**************************************************************************************************************************************************************************************************/
 .fi61u08{position:absolute;bottom:var(--fi61u08-0);left:0;width:100%;padding:0 30px;}.fi61u08 > button:last-child{margin-bottom:0;}
 
-/*!*************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/Title.tsx ***!
-  \*************************************************************************************************************************************************************************************************/
 .h16llh87{line-height:72px;margin:0;font-size:20px;font-weight:600;text-transform:uppercase;-webkit-letter-spacing:3px;-moz-letter-spacing:3px;-ms-letter-spacing:3px;letter-spacing:3px;}
 .t1iojdi9{margin:0;font-size:14px;font-weight:600;text-transform:uppercase;text-align:left;-webkit-letter-spacing:1px;-moz-letter-spacing:1px;-ms-letter-spacing:1px;letter-spacing:1px;color:white;margin-bottom:20px;}.t1iojdi9:last-child{margin-bottom:0;}
 .s1hgpceq{margin:0;font-size:14px;font-weight:600;text-transform:uppercase;text-align:left;-webkit-letter-spacing:1px;-moz-letter-spacing:1px;-ms-letter-spacing:1px;letter-spacing:1px;color:white;opacity:0.5;margin-bottom:10px;}
 
-/*!*************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/Angle.tsx ***!
-  \*************************************************************************************************************************************************************************************************/
 .c1htvbdp{display:inline-block;position:relative;width:13px;height:13px;-webkit-transform-origin:center;-ms-transform-origin:center;transform-origin:center;-webkit-transform:translateY(var(--c1htvbdp-0)) rotate(var(--c1htvbdp-1));-ms-transform:translateY(var(--c1htvbdp-0)) rotate(var(--c1htvbdp-1));transform:translateY(var(--c1htvbdp-0)) rotate(var(--c1htvbdp-1));}.c1htvbdp > svg{position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%,-50%);-ms-transform:translate(-50%,-50%);transform:translate(-50%,-50%);}
 
-/*!***************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/Section.tsx ***!
-  \***************************************************************************************************************************************************************************************************/
 .s1w1q2mr{position:relative;margin:0;padding:20px;text-align:left;background-color:rgba(255,255,255,0.05);max-width:var(--s1w1q2mr-0);width:100%;height:100%;border-radius:10px;}@media (max-width:913px){.s1w1q2mr{margin-bottom:10px;}}.s1w1q2mr > .cancel-button{position:absolute;top:68px;right:20px;cursor:pointer;}.s1w1q2mr > .send-input{width:95%;}
 .s1fbg45p{position:relative;margin:0 -30px;margin-bottom:20px;padding:20px;background-color:rgba(255,255,255,0.05);text-align:left;}.s1fbg45p > .full-address-button{position:absolute;top:68px;cursor:pointer;background:#202124;margin:0;right:20px;}.s1fbg45p > .cancel-button{position:absolute;top:73px;right:47px;cursor:pointer;}.s1fbg45p > .send-input{width:88%;}
 .s11qf4h.s1w1q2mr{width:430px;height:301px;justify-self:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}
@@ -681,9 +649,6 @@
 .t7e5et1{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;margin-bottom:20px;}
 .s1xavgsd.s1w1q2mr{max-height:200px;height:100%;overflow:auto;}
 
-/*!**************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/Select.tsx ***!
-  \**************************************************************************************************************************************************************************************************/
 .c66ez3b{display:inline-block;position:relative;margin-left:10px;}
 .s4rt7u{position:absolute;top:100%;right:0;z-index:1;margin-top:8px;padding:10px 0;border-radius:10px;}
 .o1z5g03{padding:10px 20px;cursor:pointer;text-align:left;white-space:nowrap;}.o1z5g03:hover,.o1z5g03:active{background-color:rgba(255,255,255,0.07);}
@@ -691,111 +656,60 @@
 .b1segg38{line-height:26px;cursor:var(--b1segg38-0);padding:0;border:none;background-color:transparent;-webkit-text-decoration:none;text-decoration:none;color:white;white-space:nowrap;}.b1segg38:hover,.b1segg38:active{background-color:transparent;}
 .a10kemvm{display:inline-block;vertical-align:text-top;margin-left:8px;}
 
-/*!**************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/Toggle.tsx ***!
-  \**************************************************************************************************************************************************************************************************/
 .ce7efmt{position:relative;width:36px;height:20px;cursor:pointer;}
 .inylini{position:absolute;]z-index: -1;  top: 0;  left: 0;  opacity: 0;;}
 .tsbve94{width:100%;height:100%;border:solid 1px var(--color-disabled);border-radius:10px;background-color:rgba(141,161,173,0.1);}input[type='checkbox']:checked ~ .tsbve94{border-color:var(--color-green);background-color:rgba(0,251,209,0.1);}
 .s1cj5o13{position:absolute;top:2px;left:2px;background-color:var(--color-disabled);width:16px;height:16px;border-radius:50%;}input[type='checkbox']:checked ~ .s1cj5o13{left:18px;background-color:var(--color-green);}
 
-/*!*********************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/LabeledToggle.tsx ***!
-  \*********************************************************************************************************************************************************************************************************/
 .c13ci776{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;position:relative;width:224px;height:32px;line-height:32px;padding:0;border-radius:16px;border:none;background-color:rgba(255,255,255,0.1);font-family:'SFProDisplay';color:var(--color-gray);cursor:pointer;}
 .l93yyjw{width:50%;}
 .s61adp3{position:absolute;top:0;left:var(--s61adp3-0);width:50%;height:100%;line-height:30px;border:1px solid var(--color-green);border-radius:16px;background-color:#206978;color:var(--color-green);}
 
-/*!*********************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/ErrorBoundary.tsx ***!
-  \*********************************************************************************************************************************************************************************************************/
 .e1l17vg0{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;margin-top:150px;}.e1l17vg0 > svg{width:150px;height:150px;margin-bottom:25px;}
 
-/*!*******************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/ProgressBar.tsx ***!
-  \*******************************************************************************************************************************************************************************************************/
 .cu79uqb{overflow:hidden;position:relative;width:256px;height:4px;margin:0 auto;border-radius:2px;}.cu79uqb:before{content:'';box-sizing:border-box;position:absolute;top:0;left:0;width:100%;height:4px;border:1px solid rgba(255,255,255,0.1);border-radius:2px;}
 .lnoorki{position:absolute;top:0;left:0;width:256px;height:4px;border-radius:2px;background-color:var(--color-green);}
 .l1prfldu.lnoorki{width:var(--l1prfldu-0);}
 .lo1fjlc.lnoorki{-webkit-transform:translateX(-256px);-ms-transform:translateX(-256px);transform:translateX(-256px);-webkit-transform-origin:left;-ms-transform-origin:left;transform-origin:left;}.lo1fjlc.lnoorki:first-child{-webkit-animation:increase-lo1fjlc-lnoorki 1s infinite;animation:increase-lo1fjlc-lnoorki 1s infinite;}.lo1fjlc.lnoorki:last-child{-webkit-animation:decrease-lo1fjlc-lnoorki 1s 250ms infinite;animation:decrease-lo1fjlc-lnoorki 1s 250ms infinite;}@-webkit-keyframes increase-lo1fjlc-lnoorki{0%{-webkit-transform:translateX(-16px) scaleX(0.0625);-ms-transform:translateX(-16px) scaleX(0.0625);transform:translateX(-16px) scaleX(0.0625);}100%{-webkit-transform:translateX(384px) scaleX(1.125);-ms-transform:translateX(384px) scaleX(1.125);transform:translateX(384px) scaleX(1.125);}}@keyframes increase-lo1fjlc-lnoorki{0%{-webkit-transform:translateX(-16px) scaleX(0.0625);-ms-transform:translateX(-16px) scaleX(0.0625);transform:translateX(-16px) scaleX(0.0625);}100%{-webkit-transform:translateX(384px) scaleX(1.125);-ms-transform:translateX(384px) scaleX(1.125);transform:translateX(384px) scaleX(1.125);}}@-webkit-keyframes decrease-lo1fjlc-lnoorki{0%{-webkit-transform:translateX(-96px) scalex(0.375);-ms-transform:translateX(-96px) scalex(0.375);transform:translateX(-96px) scalex(0.375);}100%{-webkit-transform:translateX(320px) scalex(0.25);-ms-transform:translateX(320px) scalex(0.25);transform:translateX(320px) scalex(0.25);}}@keyframes decrease-lo1fjlc-lnoorki{0%{-webkit-transform:translateX(-96px) scalex(0.375);-ms-transform:translateX(-96px) scalex(0.375);transform:translateX(-96px) scalex(0.375);}100%{-webkit-transform:translateX(320px) scalex(0.25);-ms-transform:translateX(320px) scalex(0.25);transform:translateX(320px) scalex(0.25);}}
 
-/*!**************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/Loader.tsx ***!
-  \**************************************************************************************************************************************************************************************************/
 .d1bsv0j2{font-style:italic;font-weight:400;font-size:14px;line-height:17px;text-align:center;color:rgba(255,255,255,0.5);width:var(--d1bsv0j2-0) 256px;margin-top:var(--d1bsv0j2-1);}
 
-/*!******************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/AssetsIcon.tsx ***!
-  \******************************************************************************************************************************************************************************************************/
 .cafo32z{display:inline-block;vertical-align:middle;width:18px;height:18px;margin-right:10px;color:var(--cafo32z-0);}
 
-/*!*******************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/ReactSelect.tsx ***!
-  \*******************************************************************************************************************************************************************************************************/
 .ai6dk7p{font-weight:400;font-size:14px;line-height:14px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;margin-left:4px;color:rgba(255,255,255,0.7);text-transform:lowercase;}
 
-/*!********************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/AssetSection.tsx ***!
-  \********************************************************************************************************************************************************************************************************/
 .sqbyqy5{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-bottom:10px;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%;height:56px;border:none;outline:none;border-radius:10px;padding-right:15px;background-color:rgba(255,255,255,0.05);}
 
-/*!******************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/AssetLabel.tsx ***!
-  \******************************************************************************************************************************************************************************************************/
 .aoqi0qq{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:end;-webkit-justify-content:flex-end;-ms-flex-pack:end;justify-content:flex-end;}
 .rsgqnwx{font-style:normal;font-weight:400;font-size:20px;line-height:20px;color:rgba(255,255,255,0.7);text-transform:uppercase;}
 .a2djd4r.rsgqnwx{font-style:normal;font-weight:400;font-size:14px;line-height:14px;color:var(--color-white);text-transform:uppercase;margin-right:4px;}
 .p109br10.rsgqnwx{font-weight:400;font-size:14px;line-height:14px;color:var(--color-white);}
 .a1sdn74h.p109br10.rsgqnwx{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;margin-left:4px;color:rgba(255,255,255,0.7);text-transform:lowercase;}
 
-/*!*****************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/Container.tsx ***!
-  \*****************************************************************************************************************************************************************************************************/
 .c1ri7zhc{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin:50px 0;}
 
-/*!*******************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/InfoSection.tsx ***!
-  \*******************************************************************************************************************************************************************************************************/
 .ali5dlg{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;width:100%;height:100px;-webkit-box-pack:start;-webkit-justify-content:flex-start;-ms-flex-pack:start;justify-content:flex-start;}
 .i1ma8pco{font-weight:400;font-size:14px;line-height:17px;color:white;text-transform:uppercase;}
 .s1gclpja{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;width:100%;}
 .s1c3wnhv{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;-webkit-align-items:flex-end;-webkit-box-align:flex-end;-ms-flex-align:flex-end;align-items:flex-end;width:100%;}
 
-/*!*****************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/ListLocks.tsx ***!
-  \*****************************************************************************************************************************************************************************************************/
 .t5id9gg{width:100%;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;}@media (max-width:450px){.t5id9gg{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;}}
 .t1juh8fl{text-align:center;}@media (max-width:450px){.t1juh8fl{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;border-bottom:1px solid rgba(255,255,255,0.1);}}
 .txaryco{margin:0 5px;}
 .wyhjdlo{max-height:150px;overflow:auto;max-width:var(--wyhjdlo-0);width:100%;white-space:nowrap;}.wyhjdlo::-webkit-scrollbar{width:2px;height:4px;}.wyhjdlo::-webkit-scrollbar-track{background-color:rgba(255,255,255,0.2) !important;border-radius:3px !important;}.wyhjdlo::-webkit-scrollbar-thumb{background-color:rgba(255,255,255,0.2) !important;border-radius:3px !important;}.wyhjdlo::-webkit-scrollbar-thumb:hover{background:var(--color-green) !important;border-radius:3px !important;}
 
-/*!****************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/Nav-menu.tsx ***!
-  \****************************************************************************************************************************************************************************************************/
 .whuot2m{width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-bottom:10px;}
 .s1fqdg9q{list-style:none;}
 .s1o7k5xb{background:transparent;border:none;float:left;display:block;color:var(--s1o7k5xb-0);font-family:'SFProDisplay',sans-serif;font-weight:700;font-size:12px;line-height:14px;padding:4px 16px;cursor:pointer;text-transform:uppercase;border-bottom:var(--s1o7k5xb-1);}.s1o7k5xb:hover{border-bottom:2px solid var(--color-green);}.s1o7k5xb:disabled{border-bottom:none;color:rgba(255,255,255,0.1);}
 
-/*!***********************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/shared/components/AssetsContainer.tsx ***!
-  \***********************************************************************************************************************************************************************************************************/
 .sl8kou4{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:var(--sl8kou4-0);-webkit-justify-content:var(--sl8kou4-0);-ms-flex-pack:var(--sl8kou4-0);justify-content:var(--sl8kou4-0);width:100%;position:relative;margin-bottom:20px;}@media (min-width:914px){.sl8kou4{width:914px;}}
 
-/*!**********************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/containers/Main/containers/MainPage/MainPage.tsx ***!
-  \**********************************************************************************************************************************************************************************************************************/
 .ss2a0dm{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;width:100%;}@media (max-width:913px){.ss2a0dm{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;}}
 .b19uom2n{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-webkit-justify-content:center;-ms-flex-pack:center;justify-content:center;width:100%;max-width:500px;}
 .ihwovl0{font-weight:400;font-size:14px;line-height:17px;color:white;text-transform:uppercase;}
 .wvtn89f{width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:start;-webkit-justify-content:flex-start;-ms-flex-pack:start;justify-content:flex-start;}@media (min-width:914px){.wvtn89f{width:914px;}}
 
-/*!*******************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/styles.ts ***!
-  \*******************************************************************************************************************************************************************************/
 :root{--color-purple:#da68f5;--color-red:#f25f5b;--color-red-expiring:#ff436a;--color-yellow:#f4ce4a;--color-green:#00f6d2;--color-blue:#0bccf7;--color-dark-blue:#042548;--color-darkest-blue:#032e49;--color-white:#ffffff;--color-gray:#8196a4;--color-disabled:#8da1ad;--color-select-list:rgba(0,0,0,.8);--color-opasity-0-1:rgba(255,255,255,0.1);}*{box-sizing:border-box;outline:none;}@font-face{font-family:'ProximaNova';src:url('../assets/fonts/ProximaNova-Regular.ttf');font-weight:400;font-style:normal;}@font-face{font-family:'ProximaNova';src:url('/assets/fonts/ProximaNova-RegularIt.ttf');font-weight:400;font-style:italic;}@font-face{font-family:'ProximaNova';src:url('/assets/fonts/ProximaNova-Semibold.ttf');font-weight:600;font-style:normal;}@font-face{font-family:'ProximaNova';src:url('/assets/fonts/ProximaNova-Bold.ttf');font-weight:700;font-style:normal;}@font-face{font-family:'SFProDisplay';src:url('/assets/fonts/SFProDisplay-Regular.ttf');font-weight:400;font-style:normal;}@font-face{font-family:'SFProDisplay';src:url('/assets/fonts/SFProDisplay-RegularItalic.ttf');font-weight:400;font-style:italic;}@font-face{font-family:'SFProDisplay';src:url('/assets/fonts/SFUIDisplay-Medium.otf');font-weight:600;font-style:normal;}@font-face{font-family:'SFProDisplay';src:url('/assets/fonts/SFProDisplay-Bold.ttf');font-weight:700;font-style:normal;}@font-face{font-family:'SFProDisplay';src:url('/assets/fonts/SFProDisplay-Bold.ttf');font-weight:700;font-style:normal;}html,body{margin:0;padding:0;height:100%;font-family:'ProximaNova','SFProDisplay',sans-serif;font-weight:600;}#root{display:inline;}body{font-size:14px;color:white;}p{margin:0;}h1,h2{margin:0;}ul,ol :not(.description){margin:0;padding:0;}tr,th,table{border:none;border-spacing:0;padding:0;margin:0;border-collapse:inherit;}
 
-/*!*****************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/@linaria/webpack5-loader/lib/outputCssLoader.js?cacheProvider=!./src/app/app.tsx ***!
-  \*****************************************************************************************************************************************************************************/
 .tfnuj7w{z-index:999;border-radius:3px;background-color:rgba(255,255,255,0.2);}
 
