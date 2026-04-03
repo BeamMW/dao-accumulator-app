@@ -9,7 +9,6 @@ import AssetLabel from '@app/shared/components/AssetLabel';
 import {
   BEAM_ASSET_ID,
   BEAMX_ASSET_ID,
-  FARMING_PERIOD,
   LOCK_PERIOD_SELECT,
   LP_TOKEN_ASSET_ID, LP_TOKEN_ASSET_NPH_ID,
   PLACEHOLDER,
@@ -25,7 +24,7 @@ import {
 } from '@app/shared/interface';
 import './index.scss';
 import {
-  selectCurrentBalance, selectIsLoading, selectIsNph, selectPredict,
+  selectAppParams, selectCurrentBalance, selectIsLoading, selectIsNph, selectPredict,
 } from '@app/containers/Main/store/selectors';
 import { IUserUpdate, IUserViewPrePhase } from '@app/shared/interface/Request';
 import { ArrowDownIcon, ArrowUpIcon } from '@app/shared/icons';
@@ -65,8 +64,14 @@ const WrapperMenu = styled.div`
 
 const MainPage: React.FC = () => {
   const isNph = useSelector(selectIsNph());
-  const isFarming = isNph ? FARMING_PERIOD.BEAM_NPH : FARMING_PERIOD.BEAM_BEAMX;
-  const isFarmingOver = !isFarming;
+  const appParams = useSelector(selectAppParams());
+  const remainingHeight = isNph
+    ? appParams?.['farm-nph-remaining-height']
+    : appParams?.['farm-remaining-height'];
+  const remainingRewards = isNph
+    ? appParams?.['farm-nph-remaining-beamX']
+    : appParams?.['farm-remaining-beamX'];
+  const isFarmingOver = appParams !== null && !remainingHeight;
   const getCurrentBalance: IBalanceFull = useSelector(selectCurrentBalance());
   const beamPool = getCurrentBalance && getCurrentBalance.res;
   const nphPool = getCurrentBalance && getCurrentBalance['res-nph'];
@@ -90,7 +95,7 @@ const MainPage: React.FC = () => {
   }, [getCurrentBalance, isNph]);
   const amountInputBeam = useInput({
     initialValue: 0,
-    validations: isFarming ? { isEmpty: true, isMax: fromGroths(currentBalance['lpToken-post']) } : { isEmpty: true },
+    validations: !isFarmingOver ? { isEmpty: true, isMax: fromGroths(currentBalance['lpToken-post']) } : { isEmpty: true },
   });
   const amountInputBeamX = useInput({
     initialValue: 0,
@@ -169,31 +174,33 @@ const MainPage: React.FC = () => {
             <AssetsContainer>
               {isFarmingOver ? (
                 <SectionWrapper>
-                  <Section title="STAKING PERIOD IS OVER">
+                  <Section title="STAKING CAMPAIGN HAS ENDED">
                     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px' }}>
                       <p style={{ color: 'white', textAlign: 'center' }}>
-                        The staking period for this pool is over. Thank you for participating and watch out for future campaigns.
+                        The staking campaign for this pool has ended. Thank you for participating and watch out for future campaigns.
                       </p>
                     </div>
                   </Section>
                 </SectionWrapper>
               ) : (
                 <SectionWrapper>
-                  <Section title={isFarming && isNph ? TITLE_SECTIONS.LOCK_AMOUNT_LP_NPH : isFarming ? TITLE_SECTIONS.LOCK_AMOUNT_LP : TITLE_SECTIONS.LOCK_AMOUNT_BEAM}>
+                  <Section title={isNph ? TITLE_SECTIONS.LOCK_AMOUNT_LP_NPH : TITLE_SECTIONS.LOCK_AMOUNT_BEAM}>
                     <AssetsSection>
                       <Input
                         variant="amount"
                         pallete="purple"
                         value={amountInputBeam.value}
                         placeholder="0"
-                        onChange={isFarming ? (e) => amountInputBeam.onChange(e) : (e) => handleChangeInputBeam(e)}
+                        onChange={isNph ? (e) => amountInputBeam.onChange(e) : (e) => handleChangeInputBeam(e)}
                         onFocus={() => !amountInputBeam.value && amountInputBeam.onChangeBind('')}
                       />
-                      <AssetLabel title={isFarming ? 'AMML' : 'BEAM'} assets_id={isFarming && isNph ? LP_TOKEN_ASSET_NPH_ID : isFarming ? LP_TOKEN_ASSET_ID : BEAM_ASSET_ID} />
+                      <AssetLabel title={isNph ? 'AMML' : 'BEAM'} assets_id={isNph ? LP_TOKEN_ASSET_NPH_ID : BEAM_ASSET_ID} />
                     </AssetsSection>
-                    {isFarming && <InfoText>{`Expected total rewards (at current conditions): ${amountInputBeam.value ? (+fromGroths(predictStore)).toFixed(8) : 0} BEAMX`}</InfoText>}
+                    {isNph && <InfoText>{`Expected total rewards (at current conditions): ${amountInputBeam.value ? (+fromGroths(predictStore)).toFixed(8) : 0} BEAMX`}</InfoText>}
+                    {remainingHeight > 0 && <InfoText>{`Farming ends in ~${remainingHeight} blocks`}</InfoText>}
+                    {remainingRewards > 0 && <InfoText>{`Remaining rewards: ${(+fromGroths(remainingRewards)).toFixed(8)} BEAMX`}</InfoText>}
                   </Section>
-                  {!isFarming ? (
+                  {!isNph ? (
                     <Section title={TITLE_SECTIONS.LOCK_AMOUNT_BEAMX}>
                       <AssetsSection>
                         <Input
@@ -201,7 +208,7 @@ const MainPage: React.FC = () => {
                           pallete="purple"
                           value={amountInputBeamX.value}
                           placeholder="0"
-                          onChange={isFarming ? (e) => amountInputBeamX.onChange(e) : (e) => handleChangeInputBeamX(e)}
+                          onChange={(e) => handleChangeInputBeamX(e)}
                           onFocus={() => !amountInputBeamX.value && amountInputBeam.onChangeBind('')}
                         />
                         <AssetLabel title="BeamX" assets_id={BEAMX_ASSET_ID} />
@@ -233,22 +240,6 @@ const MainPage: React.FC = () => {
               )}
             </AssetsContainer>
             <AssetsContainer>
-              {isFarmingOver && currentBalance.length === 0 ? null : (
-                !isFarming && !isFarmingOver ? (
-                  <SectionWrapper>
-                    <Section title={TITLE_SECTIONS.LOCK_PERIOD}>
-                      <div className="fees-wrapper">
-                        <ReactSelect
-                          options={LOCK_PERIOD_SELECT}
-                          onChange={(e) => setCurrentLockPeriod(e)}
-                          customPrefix="custom-select"
-                        />
-                      </div>
-                    </Section>
-                  </SectionWrapper>
-                ) : null
-              )}
-              {/* <InfoSection data={currentBalance} isFarming={isFarming} /> */}
               {getCurrentBalance && !(isFarmingOver && currentBalance.length === 0) ? (
                 <ListLocks
                   data={currentBalance}

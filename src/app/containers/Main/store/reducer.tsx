@@ -6,7 +6,7 @@ import * as actions from './actions';
 type Action = ActionType<typeof actions>;
 
 const initialState: IDAOAccum = {
-  params: [],
+  params: null,
   balance: null,
   predict: 0,
   isLoading: false,
